@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>سینا وب | Sina Web</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%236366f1'/%3E%3Cstop offset='1' stop-color='%2306b6d4'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23g)'/%3E%3Ctext x='32' y='45' text-anchor='middle' font-size='36' font-weight='900' fill='white' font-family='sans-serif'%3ES%3C/text%3E%3C/svg%3E">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>tailwind.config={darkMode:'class'}</script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
+<style>
+*{font-family:'Vazirmatn',sans-serif}
+:root{--a1:#6366f1;--a2:#06b6d4;--bg:#f2f4f8;--card:#ffffff;--border:#e5e9f0;--ink:#0f172a;--mut:#64748b}
+html.dark{--bg:#080d1a;--card:#111a30;--border:#1e2a45;--ink:#e8eefc;--mut:#8b98b5}
+html.fs-s{font-size:14px}html.fs-m{font-size:15px}html.fs-l{font-size:17px}
+body[data-theme="fresh"]{--a1:#6366f1;--a2:#06b6d4}
+body[data-theme="ocean"]{--a1:#0284c7;--a2:#22d3ee}
+body[data-theme="sunset"]{--a1:#f43f5e;--a2:#f59e0b}
+body[data-theme="forest"]{--a1:#059669;--a2:#a3e635}
+body[data-theme="violet"]{--a1:#7c3aed;--a2:#ec4899}
+body[data-theme="mono"]{--a1:#0f172a;--a2:#64748b}
+body{background:var(--bg);color:var(--ink);min-height:100vh}
+.bg-blob{position:fixed;inset:0;z-index:-1;overflow:hidden}
+.bg-blob::before,.bg-blob::after{content:'';position:absolute;width:520px;height:520px;border-radius:50%;filter:blur(110px);opacity:.28}
+.bg-blob::before{background:var(--a1);top:-160px;left:-120px}
+.bg-blob::after{background:var(--a2);bottom:-180px;right:-120px}
+.glass{background:var(--card);border:1px solid var(--border);border-radius:1.25rem;box-shadow:0 10px 28px rgba(2,6,23,.06)}
+.hover-lift{transition:transform .22s,box-shadow .22s}
+.hover-lift:hover{transform:translateY(-4px);box-shadow:0 18px 34px rgba(2,6,23,.12)}
+.grad-text{background:linear-gradient(90deg,var(--a1),var(--a2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.acc-bg{background:linear-gradient(135deg,var(--a1),var(--a2))}
+.acc-text{color:var(--a1)}
+.btn-acc{background:linear-gradient(135deg,var(--a1),var(--a2));color:#fff;border-radius:.9rem;padding:.55rem 1.1rem;font-size:.85rem}
+.btn-acc:hover{opacity:.92}
+.inp{background:transparent;border:1px solid var(--border);border-radius:.8rem;padding:.55rem .8rem;font-size:.85rem;width:100%;outline:none;color:var(--ink)}
+.inp:focus{border-color:var(--a1);box-shadow:0 0 0 3px color-mix(in srgb,var(--a1) 18%,transparent)}
+.page{display:none}.page.active{display:block;animation:fd .35s ease}
+@keyframes fd{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+#sidebar{width:264px;flex-shrink:0}
+#sidebar.collapsed{width:86px!important}
+#sidebar.collapsed .lbl,#sidebar.collapsed .side-extra{display:none!important}
+#sidebar.collapsed nav a{justify-content:center}
+.navlink{display:flex;align-items:center;gap:.7rem;padding:.65rem .8rem;border-radius:.9rem;cursor:pointer;font-size:.86rem;border:1px solid transparent}
+.navlink:hover{background:color-mix(in srgb,var(--a1) 9%,transparent)}
+.navlink.on{background:color-mix(in srgb,var(--a1) 13%,transparent);border-color:color-mix(in srgb,var(--a1) 25%,transparent)}
+.kpi{font-size:1.25rem;font-weight:900}
+iframe{border:0;border-radius:1rem}
+::-webkit-scrollbar{width:8px;height:8px}::-webkit-scrollbar-thumb{background:var(--a1);border-radius:8px}
+table.tbl{width:100%;font-size:.82rem}
+table.tbl th,table.tbl td{padding:.55rem .6rem;border-bottom:1px solid var(--border);text-align:right}
+.badge{font-size:.7rem;padding:.15rem .6rem;border-radius:999px;background:color-mix(in srgb,var(--a1) 12%,transparent)}
+.logo-s{width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,var(--a1),var(--a2));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;font-size:24px;box-shadow:0 6px 16px rgba(0,0,0,.18);flex-shrink:0}
+.lang-btn{font-size:11px;padding:.35rem .6rem;border-radius:.7rem;border:1px solid var(--border)}
+.lang-btn.on{background:linear-gradient(135deg,var(--a1),var(--a2));color:#fff;border-color:transparent}
+#paintCv{touch-action:none;cursor:crosshair;background:#fff;border-radius:1rem;width:100%;height:320px}
+.cal-day{aspect-ratio:1;display:flex;align-items:center;justify-content:center;border-radius:.8rem;font-size:.82rem;border:1px solid transparent}
+.cal-today{background:linear-gradient(135deg,var(--a1),var(--a2));color:#fff;font-weight:900}
+@media(max-width:640px){.hover-lift:hover{transform:none}}
+</style>
+</head>
+<body data-theme="fresh" class="text-[15px]">
+<div class="bg-blob"></div>
+
+<header class="glass sticky top-2 z-50 mx-2 mt-2 px-3 py-2.5 flex items-center gap-2 flex-wrap">
+<button onclick="toggleSidebar()" class="w-10 h-10 rounded-xl acc-bg text-white shrink-0"><i class="fas fa-bars"></i></button>
+<div class="flex items-center gap-2 cursor-pointer" onclick="go('dashboard')">
+<div class="logo-s">S</div>
+<div class="leading-tight"><h1 class="font-black text-[17px]">سینا <span class="grad-text">وب</span></h1><p class="text-[10px]" style="color:var(--mut)" data-i18n="subtitle">طراحی سینا ناظری • مدرن و تمام‌آنلاین</p></div>
+</div>
+<div class="flex-1 min-w-[180px] max-w-md relative">
+<input id="globalSearch" oninput="globalSearch(this)" placeholder="جست‌وجو… (Ctrl+K)" class="inp" style="background:var(--bg)">
+<div id="searchResults" class="hidden absolute top-full mt-1 w-full glass p-2 text-sm max-h-64 overflow-auto z-50"></div>
+</div>
+<div class="flex items-center gap-1.5 mr-auto flex-wrap">
+<button onclick="setLang('fa')" id="lb-fa" class="lang-btn on">FA</button>
+<button onclick="setLang('en')" id="lb-en" class="lang-btn">EN</button>
+<button onclick="setLang('ar')" id="lb-ar" class="lang-btn">AR</button>
+<span id="netStatus" class="flex items-center gap-1 text-xs px-2 py-1 rounded-full" style="background:color-mix(in srgb,#22c55e 15%,transparent)"><span class="w-2 h-2 rounded-full bg-green-500"></span><span id="netText">آنلاین</span></span>
+<button onclick="toggleNotif()" class="w-9 h-9 rounded-xl hover:opacity-70 relative" style="border:1px solid var(--border)"><i class="fas fa-bell"></i></button>
+<button onclick="toggleTheme()" class="w-9 h-9 rounded-xl hover:opacity-70" style="border:1px solid var(--border)"><i id="themeIcon" class="fas fa-moon"></i></button>
+</div>
+</header>
+
+<div id="notifPanel" class="hidden glass fixed top-20 left-3 z-50 w-72 p-4">
+<h3 class="font-bold mb-2 text-sm">🔔 <span data-i18n="notif">اعلان‌ها</span></h3>
+<ul class="text-[13px] space-y-2"><li class="p-2 rounded-xl" style="background:color-mix(in srgb,var(--a1) 10%,transparent)">🎉 نسخهٔ چندزبانهٔ سینا وب فعال شد.</li><li class="p-2 rounded-xl" style="background:color-mix(in srgb,var(--a1) 7%,transparent)">💹 بازار ایران هر ۳۰ دقیقه به‌روزرسانی می‌شود.</li><li class="p-2 rounded-xl" style="background:color-mix(in srgb,var(--a1) 7%,transparent)">⚙️ تنظیمات جدید اضافه شد.</li></ul>
+</div>
+
+<div id="overlay" class="hidden fixed inset-0 bg-black/45 z-40 lg:hidden" onclick="closeMobile()"></div>
+
+<div class="max-w-[1380px] mx-auto flex items-start gap-3 px-2">
+<aside id="sidebar" class="glass no-print fixed lg:sticky top-0 lg:top-[78px] right-0 z-40 lg:z-20 h-full lg:h-[calc(100vh-92px)] p-3 translate-x-full lg:translate-x-0 transition-all duration-300 overflow-y-auto">
+<div class="flex lg:hidden justify-between items-center mb-2"><span class="text-sm font-bold">منو</span><button onclick="closeMobile()" class="w-8 h-8 rounded-lg" style="background:#ef444422">✕</button></div>
+<nav id="mainNav" class="space-y-1"></nav>
+<div class="mt-4 p-3 rounded-2xl side-extra" style="background:var(--bg);border:1px solid var(--border)">
+<p class="font-bold text-[13px] mb-2">🎨 <span data-i18n="theme">تم مدرن</span></p>
+<div id="themeGrid" class="grid grid-cols-6 lg:grid-cols-3 gap-2"></div>
+<div class="flex gap-2 mt-2">
+<button onclick="toggleTheme()" class="flex-1 text-xs glass py-2 rounded-xl">🌙 / ☀️</button>
+<button onclick="exportData()" class="flex-1 text-xs glass py-2 rounded-xl">💾 <span data-i18n="backup">بکاپ</span></button>
+</div>
+<label class="block text-xs glass p-2 rounded-xl cursor-pointer text-center mt-2">📥 بازیابی<input type="file" accept=".json" onchange="importData(this)" class="hidden"></label>
+<div class="mt-3 text-center">
+<div class="logo-s mx-auto" style="width:48px;height:48px;font-size:28px">S</div>
+<p class="text-[10px] mt-1" style="color:var(--mut)">S • سینا ناظری</p>
+</div>
+</div>
+</aside>
+
+<main class="flex-1 min-w-0 pb-10">
+
+<!-- DASHBOARD -->
+<section id="page-dashboard" class="page active">
+<div class="glass p-5 mt-3 flex flex-wrap items-center gap-4 justify-between">
+<div>
+<h2 class="text-xl font-black" data-i18n="welcome">سلام! به <span class="grad-text">سینا وب</span> خوش آمدی 👋</h2>
+<p class="text-[13px] mt-1" style="color:var(--mut)"><span data-i18n="dash_sub">داشبورد زنده • بازار، جهان، اخبار و ابزارها • </span><span id="jalaliDate"></span></p>
+<div id="miniWorld" class="text-xs mt-2 flex flex-wrap gap-2"></div>
+</div>
+<div class="text-center"><div id="clock" class="font-black text-lg"></div><div class="text-[11px]" style="color:var(--mut)">تهران</div></div>
+</div>
+<div id="topMarket" class="grid grid-cols-2 md:grid-cols-4 gap-3 mt-3"></div>
+<div id="quickCards" class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-3 mt-3"></div>
+<div class="grid md:grid-cols-3 gap-3 mt-3">
+<div class="glass p-4"><h3 class="font-bold text-sm mb-2">🌦 <span data-i18n="weather">آب‌وهوا</span></h3><div class="flex gap-2 mb-2"><input id="cityIn" value="تهران" class="inp" onkeydown="if(event.key==='Enter')loadWeather()"><button onclick="loadWeather()" class="btn-acc shrink-0" data-i18n="go">برو</button></div><div id="wCity" class="text-[11px] mb-1" style="color:var(--mut)">تهران</div><div id="weather" class="text-[13px]">در حال دریافت…</div></div>
+<div class="glass p-4"><h3 class="font-bold text-sm mb-2">⚡ سرعت + IP</h3><div class="flex gap-2 flex-wrap"><button onclick="speedTest()" class="btn-acc">تست سرعت</button><button onclick="refreshIP()" class="glass px-3 py-2 rounded-xl text-xs">IP من</button></div><div id="speedOut" class="text-[13px] mt-2"></div><div id="ipInfo" class="text-[12px] mt-1" style="color:var(--mut)">…</div></div>
+<div class="glass p-4"><h3 class="font-bold text-sm mb-2">📝 <span data-i18n="todos">کارها</span></h3><div class="flex gap-2"><input id="todoIn" class="inp" placeholder="کار جدید…" onkeydown="if(event.key==='Enter')addTodo()"><button onclick="addTodo()" class="btn-acc shrink-0">+</button></div><ul id="todoList" class="mt-2 space-y-1.5 text-[13px]"></ul><textarea id="quickNote" rows="2" oninput="saveNote()" placeholder="یادداشت سریع…" class="inp mt-2"></textarea></div>
+</div>
+<div class="glass p-4 mt-3"><div class="flex items-center justify-between mb-2"><h3 class="font-bold text-sm" data-i18n="headlines">📰 تیترهای امروز</h3><button onclick="go('news')" class="text-xs badge">همهٔ اخبار ←</button></div><div id="newsFeed" class="grid md:grid-cols-2 gap-2 text-[13px]">در حال دریافت…</div></div>
+</section>
+
+<!-- MARKET -->
+<section id="page-market" class="page">
+<div class="glass p-5 mt-3">
+<div class="flex flex-wrap items-center gap-2 justify-between">
+<div><h2 class="text-lg font-black" data-i18n="market_title">💹 بازار و قیمت‌های زنده</h2><p class="text-xs" style="color:var(--mut)">ایران هر ۳۰ دقیقه • جهانی روزانه • انس لحظه‌ای • <span id="marketTime"></span></p></div>
+<button onclick="reloadMarket()" class="btn-acc">🔄 به‌روزرسانی همه</button>
+</div>
+<div id="iranCards" class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-3 mt-4"></div>
+<div class="flex gap-2 mt-4 flex-wrap text-[13px]">
+<button onclick="marketTab('iran')" id="mtab-iran" class="px-4 py-2 rounded-xl text-white" style="background:var(--a1)">🇮🇷 ایران</button>
+<button onclick="marketTab('world')" id="mtab-world" class="px-4 py-2 rounded-xl glass">🌍 ارز جهانی</button>
+<button onclick="marketTab('gold')" id="mtab-gold" class="px-4 py-2 rounded-xl glass">🥇 طلا و انس</button>
+<button onclick="marketTab('crypto')" id="mtab-crypto" class="px-4 py-2 rounded-xl glass">₿ کریپتو</button>
+<button onclick="marketTab('car')" id="mtab-car" class="px-4 py-2 rounded-xl glass">🚗 خودرو</button>
+<button onclick="marketTab('phone')" id="mtab-phone" class="px-4 py-2 rounded-xl glass">📱 موبایل</button>
+</div>
+<div id="mpane-iran" class="mt-3"><div class="glass p-3 overflow-auto"><table class="tbl" id="iranTable"></table></div><p class="text-[11px] mt-1" style="color:var(--mut)">منبع: iran-market (TGJU) • واحد IRT یعنی تومان • بدون کلید، مستقیم در مرورگر.</p></div>
+<div id="mpane-world" class="hidden mt-3 grid md:grid-cols-2 gap-3">
+<div class="glass p-4"><h3 class="font-bold text-sm mb-2">💱 مبدل ارز جهانی</h3><div class="grid grid-cols-3 gap-2"><input id="curAmt" type="number" value="100" class="inp" dir="ltr"><select id="curFrom" class="inp" dir="ltr"></select><select id="curTo" class="inp" dir="ltr"></select></div><button onclick="convertCur()" class="btn-acc mt-2 w-full">تبدیل</button><p id="curOut" class="font-black mt-2" dir="ltr"></p><p class="text-[11px]" style="color:var(--mut)">نرخ: open.er-api.com • <a class="underline" href="https://www.exchangerate-api.com" target="_blank">Rates By Exchange Rate API</a></p></div>
+<div class="glass p-4"><h3 class="font-bold text-sm mb-2">🌍 نرخ‌های مهم (پایه دلار)</h3><div id="worldTable" class="text-[13px] space-y-1.5">…</div></div>
+</div>
+<div id="mpane-gold" class="hidden mt-3 grid md:grid-cols-2 gap-3">
+<div class="glass p-4"><h3 class="font-bold text-sm mb-2">🥇 انس جهانی (XAU)</h3><div id="goldOut" class="text-[13px]">…</div><button onclick="loadGold()" class="glass px-3 py-1.5 rounded-xl text-xs mt-2">رفرش</button><p class="text-[11px] mt-1" style="color:var(--mut)">منبع: xaus.com • بدون کلید • CORS باز.</p></div>
+<div class="glass p-4"><h3 class="font-bold text-sm mb-2">🧮 تبدیل طلا</h3><div class="flex gap-2"><input id="goldGram" type="number" value="1" class="inp" dir="ltr"><button onclick="calcGold()" class="btn-acc shrink-0">گرم → دلار</button></div><p id="goldCalcOut" class="text-sm mt-2"></p><p class="text-[11px]" style="color:var(--mut)">مثقال ≈ ۴٫۶۰۸ گرم • طلای ۱۸ عیار = انس × ۰٫۷۵ تقسیم‌بندی بازار ایران متفاوت است؛ این فقط انس جهانی است.</p></div>
+</div>
+<div id="mpane-crypto" class="hidden mt-3"><div class="glass p-4"><h3 class="font-bold text-sm mb-2">₿ رمزارزها (دلار + تومان)</h3><div id="cryptoOut" class="grid md:grid-cols-3 gap-2 text-[13px]">…</div><button onclick="loadCrypto()" class="glass px-3 py-1.5 rounded-xl text-xs mt-3">رفرش</button></div></div>
+<div id="mpane-car" class="hidden mt-3"><div class="glass p-4"><h3 class="font-bold text-sm mb-2">🚗 قیمت مرجع خودرو (تومان)</h3><p class="text-[11px] mb-2" style="color:var(--mut)">خودرو API رایگان و پایدار ندارد؛ جدول زیر مرجع است و معادل دلاری آن با دلار آزاد زنده محاسبه می‌شود. برای قیمت لحظه‌ای نمایشگاه، دکمهٔ ترب را بزن.</p><div class="overflow-auto"><table class="tbl" id="carTable"></table></div><div class="flex gap-2 mt-3 flex-wrap"><input id="carSearch" class="inp" style="max-width:240px" placeholder="مثلاً پژو ۲۰۷"><button onclick="window.open('https://www.torob.com/search/?query='+encodeURIComponent(document.getElementById('carSearch').value||'پژو 207'),'_blank')" class="btn-acc">جست‌وجو در ترب ↗</button></div></div></div>
+<div id="mpane-phone" class="hidden mt-3"><div class="glass p-4"><h3 class="font-bold text-sm mb-2">📱 موبایل (دلار → تومان زنده)</h3><p class="text-[11px] mb-2" style="color:var(--mut)">قیمت دلاری جهانی + تبدیل با دلار آزاد لحظه‌ای. برای قیمت فروشگاه‌های ایران، ترب و دیجی‌کالا را ببین.</p><div class="overflow-auto"><table class="tbl" id="phoneTable"></table></div><div class="flex gap-2 mt-3 flex-wrap"><input id="phoneSearch" class="inp" style="max-width:240px" placeholder="مثلاً A54"><button onclick="window.open('https://www.torob.com/search/?query='+encodeURIComponent(document.getElementById('phoneSearch').value||'گوشی'),'_blank')" class="btn-acc">ترب ↗</button><button onclick="window.open('https://www.digikala.com/search/?q='+encodeURIComponent(document.getElementById('phoneSearch').value||'گوشی'),'_blank')" class="glass px-4 py-2 rounded-xl text-sm">دیجی‌کالا ↗</button></div></div></div>
+</div>
+</section>
+
+<!-- WORLD -->
+<section id="page-world" class="page">
+<div class="glass p-5 mt-3"><h2 class="text-lg font-black" data-i18n="world_title">🌍 ساعت‌های جهانی</h2><p class="text-xs" style="color:var(--mut)">زنده، هر ثانیه • اختلاف با تهران</p><div id="worldGrid" class="grid grid-cols-2 md:grid-cols-4 gap-3 mt-3"></div></div>
+<div class="glass p-5 mt-3"><h2 class="text-lg font-black mb-2">🧭 اختلاف ساعت با تهران</h2><div class="flex gap-2 flex-wrap"><select id="tzA" class="inp" style="max-width:220px"></select><select id="tzB" class="inp" style="max-width:220px"></select><button onclick="diffTZ()" class="btn-acc">محاسبه</button></div><p id="tzOut" class="text-sm mt-2"></p></div>
+</section>
+
+<!-- NEWS -->
+<section id="page-news" class="page">
+<div class="glass p-5 mt-3"><div class="flex flex-wrap gap-2 items-center justify-between"><h2 class="text-lg font-black" data-i18n="news_title">📰 اخبار زنده</h2><div class="flex gap-2"><select id="newsSrc" class="inp" style="max-width:220px" onchange="loadNews()"><option value="bbc">BBC فارسی</option><option value="dw">DW فارسی</option><option value="rfi">RFI فارسی</option></select><button onclick="loadNews()" class="btn-acc">رفرش</button></div></div><div id="newsList" class="grid md:grid-cols-2 gap-2 mt-3 text-[13px]">…</div><p class="text-[11px] mt-2" style="color:var(--mut)">از طریق rss2json • نیاز به اینترنت.</p></div>
+</section>
+
+<!-- AI -->
+<section id="page-ai" class="page">
+<div class="glass p-5 mt-3"><h2 class="text-lg font-black" data-i18n="ai_title">🤖 سینا ای‌آی</h2><p class="text-xs" style="color:var(--mut)">اول ویکی‌پدیای فارسی، بعد DuckDuckGo.</p><div id="chatBox" class="h-80 overflow-y-auto p-3 space-y-2 text-[13px] mt-3 rounded-2xl" style="background:var(--bg);border:1px solid var(--border)"></div><div class="flex gap-2 mt-2 flex-wrap"><input id="aiInput" class="inp" style="flex:1;min-width:200px" placeholder="سؤالت را بپرس…" onkeydown="if(event.key==='Enter')sendAI()"><button onclick="sendAI()" class="btn-acc">ارسال</button><button onclick="voiceAI()" class="glass px-3 rounded-xl">🎤</button><button onclick="speakLast()" class="glass px-3 rounded-xl">🔊</button><button onclick="clearChat()" class="glass px-3 rounded-xl">🗑</button></div></div>
+</section>
+
+<!-- TRANSLATE -->
+<section id="page-translate" class="page">
+<div class="glass p-5 mt-3"><h2 class="text-lg font-black mb-2" data-i18n="translate_title">🌍 مترجم</h2><div class="flex gap-2 flex-wrap items-center mb-2"><select id="fromLang" class="inp" style="max-width:150px"></select><button onclick="swapLangs()" class="glass px-3 py-2 rounded-xl">⇄</button><select id="toLang" class="inp" style="max-width:150px"></select><button onclick="copyTr()" class="glass px-3 py-2 rounded-xl text-xs">📋</button><button onclick="speakDst()" class="glass px-3 py-2 rounded-xl text-xs">🔊</button></div><div class="grid md:grid-cols-2 gap-2"><textarea id="trSrc" rows="6" class="inp" placeholder="متن…"></textarea><textarea id="trDst" rows="6" class="inp" readonly placeholder="ترجمه…"></textarea></div><button onclick="doTranslate()" class="btn-acc mt-2">ترجمه کن</button><div id="trHist" class="mt-2 space-y-1 text-xs"></div></div>
+</section>
+
+<!-- OFFICE -->
+<section id="page-office" class="page">
+<div class="glass p-5 mt-3"><h2 class="text-lg font-black mb-2" data-i18n="office_title">📄 آفیس</h2><div class="flex gap-2 flex-wrap mb-2"><button onclick="officeTab('word')" id="tab-word" class="btn-acc">📝 ورد</button><button onclick="officeTab('excel')" id="tab-excel" class="glass px-4 py-2 rounded-xl text-sm">📊 اکسل</button><button onclick="officeTab('ppt')" id="tab-ppt" class="glass px-4 py-2 rounded-xl text-sm">📽 پاورپوینت</button><button onclick="officeTab('pdf')" id="tab-pdf" class="glass px-4 py-2 rounded-xl text-sm">📕 PDF</button></div>
+<div id="pane-word"><div class="flex gap-1 flex-wrap text-sm mb-2"><button onclick="fmt('bold')" class="glass w-9 h-9 rounded-lg"><b>B</b></button><button onclick="fmt('italic')" class="glass w-9 h-9 rounded-lg"><i>I</i></button><button onclick="fmt('underline')" class="glass w-9 h-9 rounded-lg"><u>U</u></button><button onclick="fmt('justifyRight')" class="glass px-3 rounded-lg">راست</button><button onclick="fmt('justifyCenter')" class="glass px-3 rounded-lg">وسط</button><button onclick="fmt('insertUnorderedList')" class="glass px-3 rounded-lg">لیست</button><span id="wordCount" class="mr-auto text-xs self-center" style="color:var(--mut)"></span></div><div id="wordDoc" contenteditable="true" oninput="countWords()" class="bg-white text-gray-900 p-6 rounded-2xl min-h-[260px] leading-relaxed">مستند جدید — اینجا بنویس…</div><div class="flex gap-2 mt-2"><button onclick="window.print()" class="btn-acc">چاپ</button><button onclick="dlWord()" class="glass px-4 py-2 rounded-xl text-sm">⬇️ دانلود</button></div></div>
+<div id="pane-excel" class="hidden"><div class="flex gap-2 mb-2 flex-wrap"><button onclick="addRow()" class="glass px-3 py-1.5 rounded-xl text-xs">+ ردیف</button><button onclick="addCol()" class="glass px-3 py-1.5 rounded-xl text-xs">+ ستون</button><button onclick="exportCSV()" class="glass px-3 py-1.5 rounded-xl text-xs">CSV</button><span id="excelSum" class="text-xs mr-auto self-center" style="color:var(--mut)"></span></div><div class="overflow-auto"><table id="xlsx" class="tbl glass overflow-hidden"></table></div><p class="text-[11px] mt-1" style="color:var(--mut)">=A1+B1 و =SUM(A1:A5)</p></div>
+<div id="pane-ppt" class="hidden"><div id="slide" class="bg-white text-gray-900 rounded-2xl min-h-[280px] p-8 flex flex-col items-center justify-center text-center"><h1 id="slideT" contenteditable="true" oninput="syncSlide()" class="text-3xl font-black outline-none">اسلاید ۱</h1><p id="slideD" contenteditable="true" oninput="syncSlide()" class="mt-3 outline-none opacity-70">متن…</p></div><p id="slideNum" class="text-xs text-center mt-1" style="color:var(--mut)"></p><div class="flex gap-2 mt-2 flex-wrap justify-center"><button onclick="prevSlide()" class="glass px-3 py-1.5 rounded-xl text-xs">◀</button><button onclick="nextSlide()" class="glass px-3 py-1.5 rounded-xl text-xs">▶</button><button onclick="addSlide()" class="glass px-3 py-1.5 rounded-xl text-xs">+ اسلاید</button><button onclick="delSlide()" class="glass px-3 py-1.5 rounded-xl text-xs">حذف</button><button onclick="changeSlideBg()" class="glass px-3 py-1.5 rounded-xl text-xs">🎨</button></div></div>
+<div id="pane-pdf" class="hidden"><input type="file" accept="application/pdf" onchange="loadPDF(this)" class="inp mb-2"><iframe id="pdfFrame" src="https://mozilla.github.io/pdf.js/web/viewer.html" class="w-full h-[480px] glass"></iframe></div>
+</div>
+</section>
+
+<!-- GAMES -->
+<section id="page-games" class="page">
+<div class="glass p-5 mt-3"><h2 class="text-lg font-black mb-2" data-i18n="games_title">🎮 بازی‌ها</h2><div class="flex gap-2 flex-wrap mb-2"><button onclick="gameTab('mini')" id="gtab-mini" class="btn-acc">🎯 مینی‌گیم</button><button onclick="gameTab('embed')" id="gtab-embed" class="glass px-4 py-2 rounded-xl text-sm">🌐 وب</button><button onclick="gameTab('store')" id="gtab-store" class="glass px-4 py-2 rounded-xl text-sm">🏪 فروشگاه</button></div>
+<div id="gpane-mini"><div class="grid md:grid-cols-2 gap-3">
+<div class="glass p-3"><h3 class="font-bold text-sm mb-1">🔢 حدس عدد</h3><div class="flex gap-2"><input id="guessNum" type="number" class="inp" onkeydown="if(event.key==='Enter')checkGuess()"><button onclick="checkGuess()" class="btn-acc">حدس</button></div><p id="guessOut" class="text-[13px] mt-1"></p><button onclick="resetGuess()" class="text-xs mt-1 underline">شروع دوباره</button></div>
+<div class="glass p-3"><h3 class="font-bold text-sm mb-1">🧠 حافظه</h3><div id="memGrid" class="grid grid-cols-4 gap-2"></div><p id="memStat" class="text-xs mt-1" style="color:var(--mut)"></p><button onclick="initMem()" class="text-xs underline">جدید</button></div>
+<div class="glass p-3"><h3 class="font-bold text-sm mb-1">❌⭕ دوز</h3><div id="ticGrid" class="grid grid-cols-3 gap-2 max-w-[220px]"></div><p id="ticStat" class="text-[13px] mt-1"></p><button onclick="resetTic()" class="text-xs underline">ریست</button></div>
+<div class="glass p-3"><h3 class="font-bold text-sm mb-1">➕ ریاضی</h3><p id="mathQ" class="font-black text-lg"></p><div class="flex gap-2 mt-1"><input id="mAns" type="number" class="inp" onkeydown="if(event.key==='Enter')checkMath()"><button onclick="checkMath()" class="btn-acc">تأیید</button></div><p id="mathOut" class="text-[13px] mt-1"></p><button onclick="newMath()" class="text-xs underline">سؤال جدید</button></div>
+</div></div>
+<div id="gpane-embed" class="hidden"><div class="grid md:grid-cols-2 gap-2 mb-2"><button onclick="document.getElementById('gameFrame').src='https://play2048.co/'" class="glass p-3 text-right text-sm">🔢 2048</button><button onclick="document.getElementById('gameFrame').src='https://hexgl.bkcore.com/play/'" class="glass p-3 text-right text-sm">🏎 HexGL</button></div><iframe id="gameFrame" src="https://play2048.co/" class="w-full h-[480px] glass"></iframe></div>
+<div id="gpane-store" class="hidden grid md:grid-cols-3 gap-3"></div>
+</div>
+</section>
+
+<!-- TOOLS -->
+<section id="page-tools" class="page">
+<div class="glass p-5 mt-3"><h2 class="text-lg font-black" data-i18n="tools_title">🧰 جعبه ابزار کاربردی</h2><p class="text-xs" style="color:var(--mut)">ماشین‌حساب، سلامت، متن، رمز، زمان و…</p>
+<div class="grid md:grid-cols-2 xl:grid-cols-3 gap-3 mt-3">
+<div class="glass p-4"><h3 class="font-bold text-sm mb-2">🧮 ماشین‌حساب</h3><input id="calcIn" class="inp" dir="ltr" placeholder="12*8/3" onkeydown="if(event.key==='Enter')doCalc()"><div class="flex gap-2 mt-2"><button onclick="doCalc()" class="btn-acc flex-1">=</button><button onclick="document.getElementById('calcIn').value=''" class="glass px-3 rounded-xl">C</button></div><p id="calcOut" class="font-black mt-1" dir="ltr"></p></div>
+<div class="glass p-4"><h3 class="font-bold text-sm mb-1">🔑 رمزساز امن</h3><div class="flex gap-2 items-center"><input id="passLen" type="number" value="14" class="inp" style="max-width:80px" dir="ltr"><button onclick="genPass()" class="btn-acc">ساخت</button></div><code id="passOut" dir="ltr" class="text-[13px] block mt-2 break-all"></code><button onclick="copyPass()" class="text-xs underline mt-1">کپی</button></div>
+<div class="glass p-4"><h3 class="font-bold text-sm mb-1">⬛ QR ساز</h3><div class="flex gap-2"><input id="qrIn" class="inp" placeholder="متن…"><button onclick="makeQR()" class="btn-acc">ساخت</button></div><img id="qrImg" class="mt-2 rounded-xl w-[150px] h-[150px] bg-white border" alt="QR"></div>
+<div class="glass p-4"><h3 class="font-bold text-sm mb-1">🔤 Base64</h3><input id="b64In" class="inp mb-1" placeholder="متن…"><div class="flex gap-2"><button onclick="b64Enc()" class="glass px-3 py-1.5 rounded-xl text-xs">رمز</button><button onclick="b64Dec()" class="glass px-3 py-1.5 rounded-xl text-xs">باز</button></div><p id="b64Out" class="text-xs mt-1 break-all" dir="ltr"></p></div>
+<div class="glass p-4"><h3 class="font-bold text-sm mb-1">🎨 رنگ</h3><div class="flex items-center gap-2"><input type="color" id="colorPick" value="#6366f1" oninput="document.getElementById('colorHex').textContent=this.value" class="w-10 h-10"><code id="colorHex" dir="ltr">#6366f1</code><button onclick="copyColor()" class="glass px-2 py-1 rounded-lg text-xs">کپی</button></div><h3 class="font-bold text-sm mt-3 mb-1">📏 تبدیل واحد</h3><div class="flex gap-1"><input id="unitIn" type="number" value="100" class="inp" dir="ltr"><select id="unitType" class="inp"><option value="cm-m">cm→m</option><option value="m-km">m→km</option><option value="km-mile">km→mile</option><option value="kg-lb">kg→lb</option><option value="c-f">C→F</option></select><button onclick="unitConvert()" class="btn-acc">⇄</button></div><p id="unitOut" class="text-[13px] mt-1"></p></div>
+<div class="glass p-4"><h3 class="font-bold text-sm mb-1">⏱ کرونومتر و تایمر</h3><p id="swTime" class="text-2xl font-black" dir="ltr">00:00.0</p><div class="flex gap-1 mt-1 flex-wrap"><button onclick="swStart()" class="glass px-3 py-1 rounded-xl text-xs">شروع</button><button onclick="swPause()" class="glass px-3 py-1 rounded-xl text-xs">توقف</button><button onclick="swReset()" class="glass px-3 py-1 rounded-xl text-xs">ریست</button></div><div class="flex gap-1 mt-2"><input id="timerMin" type="number" value="5" class="inp" dir="ltr" style="max-width:80px"><button onclick="startTimer()" class="btn-acc">تایمر ⏳</button><button onclick="stopTimer()" class="glass px-3 rounded-xl text-xs">لغو</button></div><p id="timerOut" class="font-black mt-1" dir="ltr"></p></div>
+<div class="glass p-4"><h3 class="font-bold text-sm mb-1">❤️ BMI</h3><div class="grid grid-cols-2 gap-1"><input id="bmiH" type="number" class="inp" placeholder="قد cm" dir="ltr"><input id="bmiW" type="number" class="inp" placeholder="وزن kg" dir="ltr"></div><button onclick="calcBMI()" class="btn-acc mt-2 w-full">محاسبه</button><p id="bmiOut" class="text-[13px] mt-1"></p><h3 class="font-bold text-sm mt-3 mb-1">🎂 سن</h3><input id="birthY" type="number" value="1370" class="inp" dir="ltr" placeholder="سال تولد شمسی"><button onclick="calcAge()" class="glass px-3 py-1.5 rounded-xl text-xs mt-1">محاسبه سن</button><p id="ageOut" class="text-[13px] mt-1"></p></div>
+<div class="glass p-4"><h3 class="font-bold text-sm mb-1">📝 متن و JSON</h3><textarea id="charIn" rows="2" class="inp" placeholder="متن را بچسبان…"></textarea><button onclick="countChar()" class="glass px-3 py-1.5 rounded-xl text-xs mt-1">شمارش</button><p id="charOut" class="text-xs mt-1"></p><textarea id="jsonIn" rows="2" class="inp mt-2" dir="ltr" placeholder='{"a":1}'></textarea><div class="flex gap-1 mt-1"><button onclick="formatJSON()" class="glass px-3 py-1.5 rounded-xl text-xs">مرتب JSON</button><button onclick="genUUID()" class="glass px-3 py-1.5 rounded-xl text-xs">UUID</button></div><p id="jsonOut" class="text-xs mt-1 break-all" dir="ltr"></p></div>
+<div class="glass p-4"><h3 class="font-bold text-sm mb-1">💸 درصد و تخفیف</h3><div class="grid grid-cols-2 gap-1"><input id="disPrice" type="number" class="inp" placeholder="قیمت" dir="ltr"><input id="disPct" type="number" class="inp" placeholder="٪ تخفیف" dir="ltr"></div><button onclick="calcDis()" class="btn-acc mt-2 w-full">حساب</button><p id="disOut" class="text-[13px] mt-1"></p><h3 class="font-bold text-sm mt-3 mb-1">🔢 عدد به حروف</h3><div class="flex gap-1"><input id="numFa" type="number" class="inp" dir="ltr" placeholder="125000"><button onclick="numWords()" class="glass px-3 rounded-xl text-xs">تبدیل</button></div><p id="numFaOut" class="text-[13px] mt-1"></p></div>
+</div>
+</div>
+</section>
+
+<!-- CLOUD -->
+<section id="page-cloud" class="page">
+<div class="glass p-5 mt-3"><h2 class="text-lg font-black" data-i18n="cloud_title">☁️ سینا کلود</h2><p class="text-xs" style="color:var(--mut)">هر فایل تا ۴ مگ • مجموع ۵ مگ (محدودیت مرورگر)</p><div class="glass p-3 mt-2"><div class="flex justify-between text-xs mb-1"><span>فضا</span><span id="cloudPct">0%</span></div><div class="h-2.5 rounded-full overflow-hidden" style="background:var(--bg);border:1px solid var(--border)"><div id="cloudBar" class="h-full acc-bg" style="width:0%"></div></div></div><input type="file" multiple onchange="uploadFiles(this)" class="inp mt-2"><input id="cloudSearch" oninput="renderCloud()" placeholder="جست‌وجوی فایل…" class="inp mt-2"><div id="fileList" class="grid md:grid-cols-3 gap-2 mt-2"></div></div>
+</section>
+
+<!-- BROWSER -->
+<section id="page-browser" class="page">
+<div class="glass p-5 mt-3"><h2 class="text-lg font-black mb-2" data-i18n="browser_title">🌐 مرورگر و ویکی</h2><div class="flex gap-2 flex-wrap"><input id="urlBar" value="https://www.wikipedia.org" class="inp" style="flex:1;min-width:200px" dir="ltr" onkeydown="if(event.key==='Enter')browse()"><button onclick="browse()" class="btn-acc">برو</button><button onclick="openExternal()" class="glass px-3 rounded-xl text-xs">↗ تب جدید</button></div><div class="flex gap-1 mt-2 flex-wrap text-xs"><button onclick="quickGo('https://www.wikipedia.org')" class="glass px-3 py-1.5 rounded-xl">ویکی‌پدیا</button><button onclick="quickGo('https://www.openstreetmap.org/export/embed.html?bbox=51.2,35.6,51.6,35.8&layer=mapnik')" class="glass px-3 py-1.5 rounded-xl">🗺 تهران</button><button onclick="quickGo('https://example.com')" class="glass px-3 py-1.5 rounded-xl">example</button></div><iframe id="browserFrame" src="https://www.wikipedia.org" class="w-full h-[380px] glass mt-2"></iframe><div class="grid md:grid-cols-2 gap-3 mt-3"><div class="glass p-4"><h3 class="font-bold text-sm mb-1">📖 ویکی‌پدیای فارسی</h3><div class="flex gap-2"><input id="wikiQ" class="inp" placeholder="جست‌وجو…" onkeydown="if(event.key==='Enter')searchWiki()"><button onclick="searchWiki()" class="btn-acc">بگرد</button></div><div id="wikiOut" class="text-[13px] mt-2 space-y-1"></div></div><div class="glass p-4"><h3 class="font-bold text-sm mb-1">🛰 حالت خواندنی</h3><input id="proxyUrl" class="inp" dir="ltr" placeholder="example.com"><button onclick="openProxy()" class="btn-acc mt-2">باز کن</button><div id="proxyOut" class="text-xs mt-2 max-h-36 overflow-auto"></div></div></div></div>
+</section>
+
+<!-- CALENDAR -->
+<section id="page-calendar" class="page">
+<div class="glass p-5 mt-3"><h2 class="text-lg font-black" data-i18n="calendar_title">📅 تقویم شمسی</h2><p class="text-xs" style="color:var(--mut)" id="calLabel"></p><div class="grid grid-cols-7 gap-1 text-center text-[11px] mt-3 mb-1" style="color:var(--mut)"><span>شنبه</span><span>یکشنبه</span><span>دوشنبه</span><span>سه‌شنبه</span><span>چهارشنبه</span><span>پنجشنبه</span><span>جمعه</span></div><div id="calGrid" class="grid grid-cols-7 gap-1"></div><div class="flex gap-2 mt-3"><button onclick="renderCal()" class="glass px-3 py-1.5 rounded-xl text-xs">امروز</button></div></div>
+</section>
+
+<!-- POMODORO -->
+<section id="page-pomodoro" class="page">
+<div class="glass p-5 mt-3 text-center"><h2 class="text-lg font-black" data-i18n="pomodoro_title">⏳ پومودورو</h2><p class="text-xs" style="color:var(--mut)">۲۵ دقیقه تمرکز • ۵ دقیقه استراحت</p><div id="pomTime" class="font-black my-4" style="font-size:56px" dir="ltr">25:00</div><div class="flex gap-2 justify-center flex-wrap"><button onclick="pomSet(25)" class="glass px-4 py-2 rounded-xl text-sm">۲۵ تمرکز</button><button onclick="pomSet(5)" class="glass px-4 py-2 rounded-xl text-sm">۵ استراحت</button><button onclick="pomSet(15)" class="glass px-4 py-2 rounded-xl text-sm">۱۵ استراحت بلند</button></div><div class="flex gap-2 justify-center mt-2"><button onclick="pomStart()" class="btn-acc">شروع</button><button onclick="pomPause()" class="glass px-4 py-2 rounded-xl text-sm">توقف</button><button onclick="pomReset()" class="glass px-4 py-2 rounded-xl text-sm">ریست</button></div><p id="pomStat" class="text-xs mt-2" style="color:var(--mut)"></p></div>
+</section>
+
+<!-- PAINT -->
+<section id="page-paint" class="page">
+<div class="glass p-5 mt-3"><h2 class="text-lg font-black" data-i18n="paint_title">🎨 نقاشی</h2><div class="flex gap-2 items-center mt-2 flex-wrap"><input type="color" id="paintColor" value="#6366f1" class="w-10 h-10"><input type="range" id="paintSize" min="1" max="20" value="4"><button onclick="clearPaint()" class="glass px-3 py-1.5 rounded-xl text-xs">پاک‌کن</button><button onclick="savePaint()" class="btn-acc">ذخیره PNG</button></div><canvas id="paintCv" class="mt-2" style="border:1px solid var(--border)"></canvas></div>
+</section>
+
+<!-- NOTES -->
+<section id="page-notes" class="page">
+<div class="glass p-5 mt-3"><h2 class="text-lg font-black" data-i18n="notes_title">📒 یادداشت‌ها</h2><div class="flex gap-2 mt-2"><input id="noteTitle" class="inp" placeholder="عنوان…" style="max-width:220px"><button onclick="addNote()" class="btn-acc">+ ذخیره</button></div><textarea id="noteBody" rows="3" class="inp mt-2" placeholder="متن یادداشت…"></textarea><div id="notesList" class="grid md:grid-cols-3 gap-2 mt-3"></div></div>
+</section>
+
+<!-- DICT -->
+<section id="page-dict" class="page">
+<div class="glass p-5 mt-3"><h2 class="text-lg font-black" data-i18n="dict_title">📖 دیکشنری انگلیسی</h2><p class="text-xs" style="color:var(--mut)">رایگان • dictionaryapi.dev • بدون کلید</p><div class="flex gap-2 mt-2"><input id="dictQ" class="inp" dir="ltr" placeholder="example" onkeydown="if(event.key==='Enter')lookupDict()"><button onclick="lookupDict()" class="btn-acc">معنی</button></div><div id="dictOut" class="text-[13px] mt-3 space-y-2"></div></div>
+</section>
+
+<!-- SETTINGS -->
+<section id="page-settings" class="page">
+<div class="glass p-5 mt-3"><h2 class="text-lg font-black" data-i18n="settings_title">⚙️ تنظیمات</h2><p class="text-xs" style="color:var(--mut)">زبان، تم، فونت، بکاپ و حریم</p>
+<div class="grid md:grid-cols-2 gap-3 mt-3">
+<div class="glass p-4"><h3 class="font-bold text-sm mb-2">🌍 زبان / Language / اللغة</h3><div class="flex gap-2"><button onclick="setLang('fa')" class="btn-acc">فارسی</button><button onclick="setLang('en')" class="glass px-4 py-2 rounded-xl text-sm">English</button><button onclick="setLang('ar')" class="glass px-4 py-2 rounded-xl text-sm">العربية</button></div><h3 class="font-bold text-sm mt-3 mb-2">🎨 تم</h3><div id="settingsThemeGrid" class="grid grid-cols-6 gap-2"></div><button onclick="toggleTheme()" class="glass px-3 py-1.5 rounded-xl text-xs mt-2">🌙 / ☀️ شب و روز</button></div>
+<div class="glass p-4"><h3 class="font-bold text-sm mb-2">🔠 اندازهٔ فونت</h3><div class="flex gap-2"><button onclick="setFont('s')" class="glass px-3 py-1.5 rounded-xl text-xs">کوچک</button><button onclick="setFont('m')" class="glass px-3 py-1.5 rounded-xl text-xs">متوسط</button><button onclick="setFont('l')" class="glass px-3 py-1.5 rounded-xl text-xs">بزرگ</button></div><h3 class="font-bold text-sm mt-3 mb-2">🔔 رفتار</h3><label class="flex items-center gap-2 text-[13px]"><input type="checkbox" id="notifChk" onchange="toggleNotifSet(this)"> اعلان‌ها</label><label class="flex items-center gap-2 text-[13px] mt-1"><input type="checkbox" id="autoChk" onchange="toggleAuto(this)"> رفرش خودکار بازار (۳۰ دقیقه)</label></div>
+<div class="glass p-4"><h3 class="font-bold text-sm mb-2">💾 بکاپ و داده</h3><div class="flex gap-2 flex-wrap"><button onclick="exportData()" class="btn-acc">دانلود بکاپ</button><label class="glass px-4 py-2 rounded-xl text-sm cursor-pointer">بازیابی<input type="file" accept=".json" onchange="importData(this)" class="hidden"></label><button onclick="resetAll()" class="glass px-4 py-2 rounded-xl text-sm" style="color:#ef4444">حذف همه</button></div><p class="text-xs mt-2" style="color:var(--mut)">حافظهٔ مصرفی: <span id="storeSize">…</span></p></div>
+<div class="glass p-4"><h3 class="font-bold text-sm mb-2">ℹ️ درباره</h3><div class="flex items-center gap-2"><div class="logo-s">S</div><div class="text-[13px]"><b>سینا وب</b><br><span style="color:var(--mut)">طراحی سینا ناظری • نسخهٔ چندزبانه</span></div></div></div>
+</div></div>
+</section>
+
+</main>
+</div>
+
+<footer class="glass mx-2 mb-2 p-4 text-center text-[13px]">
+<p class="font-black">سینا وب — <span class="grad-text">نسخهٔ مدرن</span></p>
+<p style="color:var(--mut)">Copyright © 2024 — Design by Sina Nazeri • تمام‌آنلاین</p>
+</footer>
+<button id="topBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})" class="hidden fixed bottom-4 left-4 w-11 h-11 rounded-full text-white shadow-xl z-50 acc-bg">↑</button>
+
+<script>
+function fa2en(s){return String(s).replace(/[۰-۹]/g,function(d){return '۰۱۲۳۴۵۶۷۸۹'.indexOf(d)}).replace(/[٠-٩]/g,function(d){return '٠١٢٣٤٥٦٧٨٩'.indexOf(d)})}
+function dl(n,c,t){var a=document.createElement('a');a.href=URL.createObjectURL(new Blob([c],{type:t||'text/plain'}));a.download=n;document.body.appendChild(a);a.click();setTimeout(function(){URL.revokeObjectURL(a.href);a.remove()},600)}
+function esc(s){return String(s==null?'':s).replace(/</g,'&lt;').replace(/>/g,'&gt;')}
+function numFa(n){try{return Number(n).toLocaleString('fa-IR')}catch(e){return n}}
+/* ===== LANG ===== */
+var curLang='fa';
+var APPS_N={dashboard:{fa:'داشبورد',en:'Dashboard',ar:'لوحة القيادة'},market:{fa:'بازار و قیمت‌ها',en:'Market',ar:'السوق والأسعار'},world:{fa:'ساعت جهانی',en:'World Clock',ar:'الساعة العالمية'},news:{fa:'اخبار',en:'News',ar:'الأخبار'},ai:{fa:'سینا ای‌آی',en:'Sina AI',ar:'سينا AI'},translate:{fa:'مترجم',en:'Translator',ar:'المترجم'},office:{fa:'آفیس',en:'Office',ar:'أوفيس'},games:{fa:'بازی‌ها',en:'Games',ar:'الألعاب'},tools:{fa:'ابزارها',en:'Tools',ar:'الأدوات'},cloud:{fa:'کلود',en:'Cloud',ar:'السحابة'},browser:{fa:'مرورگر',en:'Browser',ar:'المتصفح'},calendar:{fa:'تقویم',en:'Calendar',ar:'التقويم'},pomodoro:{fa:'پومودورو',en:'Pomodoro',ar:'بومودورو'},paint:{fa:'نقاشی',en:'Paint',ar:'الرسم'},notes:{fa:'یادداشت‌ها',en:'Notes',ar:'الملاحظات'},dict:{fa:'دیکشنری',en:'Dictionary',ar:'القاموس'},settings:{fa:'تنظیمات',en:'Settings',ar:'الإعدادات'}};
+var T={fa:{subtitle:'طراحی سینا ناظری • مدرن و تمام‌آنلاین',welcome:'سلام! به <span class="grad-text">سینا وب</span> خوش آمدی 👋',dash_sub:'داشبورد زنده • بازار، جهان، اخبار و ابزارها • ',weather:'آب‌وهوا',go:'برو',todos:'کارها',headlines:'📰 تیترهای امروز',market_title:'💹 بازار و قیمت‌های زنده',world_title:'🌍 ساعت‌های جهانی',news_title:'📰 اخبار زنده',ai_title:'🤖 سینا ای‌آی',translate_title:'🌍 مترجم',office_title:'📄 آفیس',games_title:'🎮 بازی‌ها',tools_title:'🧰 جعبه ابزار کاربردی',cloud_title:'☁️ سینا کلود',browser_title:'🌐 مرورگر و ویکی',calendar_title:'📅 تقویم شمسی',pomodoro_title:'⏳ پومودورو',paint_title:'🎨 نقاشی',notes_title:'📒 یادداشت‌ها',dict_title:'📖 دیکشنری انگلیسی',settings_title:'⚙️ تنظیمات',theme:'تم مدرن',backup:'بکاپ',notif:'اعلان‌ها',search:'جست‌وجو… (Ctrl+K)'},en:{subtitle:'By Sina Nazeri • Modern & All-online',welcome:'Hello! Welcome to <span class="grad-text">Sina Web</span> 👋',dash_sub:'Live dashboard • Market, World, News & Tools • ',weather:'Weather',go:'Go',todos:'Todos',headlines:'📰 Today headlines',market_title:'💹 Live Market',world_title:'🌍 World Clock',news_title:'📰 Live News',ai_title:'🤖 Sina AI',translate_title:'🌍 Translator',office_title:'📄 Office',games_title:'🎮 Games',tools_title:'🧰 Toolbox',cloud_title:'☁️ Sina Cloud',browser_title:'🌐 Browser & Wiki',calendar_title:'📅 Persian Calendar',pomodoro_title:'⏳ Pomodoro',paint_title:'🎨 Paint',notes_title:'📒 Notes',dict_title:'📖 English Dictionary',settings_title:'⚙️ Settings',theme:'Modern theme',backup:'Backup',notif:'Notifications',search:'Search… (Ctrl+K)'},ar:{subtitle:'تصميم سينا ناظري • حديث وكامل أونلاين',welcome:'مرحباً! أهلاً بك في <span class="grad-text">سينا ويب</span> 👋',dash_sub:'لوحة حية • السوق والعالم والأخبار والأدوات • ',weather:'الطقس',go:'اذهب',todos:'المهام',headlines:'📰 عناوين اليوم',market_title:'💹 السوق والأسعار الحية',world_title:'🌍 الساعة العالمية',news_title:'📰 أخبار حية',ai_title:'🤖 سينا AI',translate_title:'🌍 المترجم',office_title:'📄 أوفيس',games_title:'🎮 الألعاب',tools_title:'🧰 صندوق الأدوات',cloud_title:'☁️ سينا كلاود',browser_title:'🌐 المتصفح والويكي',calendar_title:'📅 التقويم الشمسي',pomodoro_title:'⏳ بومودورو',paint_title:'🎨 الرسم',notes_title:'📒 الملاحظات',dict_title:'📖 قاموس إنجليزي',settings_title:'⚙️ الإعدادات',theme:'سمة حديثة',backup:'نسخة احتياطية',notif:'الإشعارات',search:'بحث… (Ctrl+K)'}};
+function setLang(l){curLang=l;try{localStorage.setItem('sina_lang',l)}catch(e){}applyLang()}
+function applyLang(){try{document.documentElement.lang=curLang;document.dir=(curLang==='en'?'ltr':'rtl')}catch(e){}buildNav();buildCards();var d=T[curLang]||T.fa;document.querySelectorAll('[data-i18n]').forEach(function(el){var k=el.getAttribute('data-i18n');if(d[k])el.innerHTML=d[k]});var gs=document.getElementById('globalSearch');if(gs)gs.placeholder=d.search;['fa','en','ar'].forEach(function(x){var b=document.getElementById('lb-'+x);if(b)b.classList.toggle('on',x===curLang)})}
+var APPS=[
+{id:'dashboard',icon:'fa-house'},
+{id:'market',icon:'fa-chart-line'},
+{id:'world',icon:'fa-earth-asia'},
+{id:'news',icon:'fa-newspaper'},
+{id:'ai',icon:'fa-robot'},
+{id:'translate',icon:'fa-language'},
+{id:'office',icon:'fa-file-lines'},
+{id:'games',icon:'fa-gamepad'},
+{id:'tools',icon:'fa-toolbox'},
+{id:'cloud',icon:'fa-cloud'},
+{id:'browser',icon:'fa-globe'},
+{id:'calendar',icon:'fa-calendar-days'},
+{id:'pomodoro',icon:'fa-stopwatch'},
+{id:'paint',icon:'fa-paintbrush'},
+{id:'notes',icon:'fa-note-sticky'},
+{id:'dict',icon:'fa-book-open'},
+{id:'settings',icon:'fa-gear'}];
+function appName(id){return (APPS_N[id]&&(APPS_N[id][curLang]||APPS_N[id].fa))||id}
+function buildNav(){document.getElementById('mainNav').innerHTML=APPS.map(function(a){return '<a onclick="go(\''+a.id+'\')" data-nav="'+a.id+'" class="navlink"><i class="fas '+a.icon+' w-5 acc-text"></i><span class="lbl">'+appName(a.id)+'</span></a>'}).join('');var last=null;try{last=localStorage.getItem('sina_last')}catch(e){}if(last)document.querySelectorAll('[data-nav]').forEach(function(n){n.classList.toggle('on',n.dataset.nav===last)})}
+function buildCards(){var m={dashboard:0,market:'💹',world:'🌍',news:'📰',ai:'🤖',translate:'🌍',office:'📄',games:'🎮',tools:'🧰',cloud:'☁️',browser:'🌐',calendar:'📅',pomodoro:'⏳',paint:'🎨',notes:'📒',dict:'📖',settings:'⚙️'};document.getElementById('quickCards').innerHTML=APPS.filter(function(a){return a.id!=='dashboard'}).map(function(a){return '<div onclick="go(\''+a.id+'\')" class="glass hover-lift p-4 cursor-pointer text-center"><div class="text-2xl">'+(m[a.id]||'✨')+'</div><h3 class="font-bold text-[13px] mt-1">'+appName(a.id)+'</h3></div>'}).join('')}
+function go(id){document.querySelectorAll('.page').forEach(function(p){p.classList.remove('active')});var el=document.getElementById('page-'+id);if(el)el.classList.add('active');document.querySelectorAll('[data-nav]').forEach(function(n){n.classList.toggle('on',n.dataset.nav===id)});try{localStorage.setItem('sina_last',id)}catch(e){}closeMobile();window.scrollTo({top:0,behavior:'smooth'})}
+function toggleSidebar(){var sb=document.getElementById('sidebar'),ov=document.getElementById('overlay');if(window.innerWidth<1024){var c=sb.classList.contains('translate-x-full');if(c){sb.classList.remove('translate-x-full');ov.classList.remove('hidden')}else{sb.classList.add('translate-x-full');ov.classList.add('hidden')}}else{sb.classList.toggle('collapsed');try{localStorage.setItem('sina_collapsed',sb.classList.contains('collapsed')?'1':'0')}catch(e){}}}
+function closeMobile(){if(window.innerWidth>=1024)return;document.getElementById('sidebar').classList.add('translate-x-full');document.getElementById('overlay').classList.add('hidden')}
+function toggleTheme(){var h=document.documentElement;h.classList.toggle('dark');var d=h.classList.contains('dark');document.getElementById('themeIcon').className=d?'fas fa-sun':'fas fa-moon';try{localStorage.setItem('sina_mode',d?'dark':'light')}catch(e){}}
+function toggleNotif(){document.getElementById('notifPanel').classList.toggle('hidden')}
+function globalSearch(el){var q=el.value.trim(),box=document.getElementById('searchResults');if(!q){box.classList.add('hidden');return}var r=APPS.filter(function(a){return appName(a.id).indexOf(q)>-1||a.id.indexOf(q.toLowerCase())>-1});box.innerHTML=r.length?r.map(function(a){return '<div onclick="go(\''+a.id+'\');boxHide()" class="p-2 hover:opacity-70 cursor-pointer">🔹 '+appName(a.id)+'</div>'}).join(''):'<div class="p-2 opacity-60">نتیجه‌ای نیست</div>';box.classList.remove('hidden')}
+function boxHide(){document.getElementById('searchResults').classList.add('hidden')}
+function netStat(){var on=navigator.onLine;document.getElementById('netText').textContent=on?'آنلاین':'آفلاین'}
+addEventListener('online',netStat);addEventListener('offline',netStat);
+var WORLD=[{l:'تهران',tz:'Asia/Tehran'},{l:'دوبی',tz:'Asia/Dubai'},{l:'استانبول',tz:'Europe/Istanbul'},{l:'لندن',tz:'Europe/London'},{l:'نیویورک',tz:'America/New_York'},{l:'توکیو',tz:'Asia/Tokyo'},{l:'سیدنی',tz:'Australia/Sydney'},{l:'پاریس',tz:'Europe/Paris'}];
+function tick(){try{
+var now=new Date();
+var te=new Intl.DateTimeFormat('fa-IR',{hour:'2-digit',minute:'2-digit',second:'2-digit',timeZone:'Asia/Tehran'}).format(now);
+var c=document.getElementById('clock');if(c)c.textContent=te;
+var jd=new Intl.DateTimeFormat('fa-IR',{dateStyle:'full'}).format(now);
+var j=document.getElementById('jalaliDate');if(j)j.textContent=jd;
+var mw=document.getElementById('miniWorld');if(mw&&document.getElementById('page-dashboard').classList.contains('active')){mw.innerHTML=WORLD.slice(0,4).map(function(w){var t=new Intl.DateTimeFormat('fa-IR',{hour:'2-digit',minute:'2-digit',timeZone:w.tz}).format(now);return '<span class="badge">'+w.l+' '+t+'</span>'}).join('')}
+var g=document.getElementById('worldGrid');if(g&&document.getElementById('page-world').classList.contains('active')){g.innerHTML=WORLD.map(function(w){var t=new Intl.DateTimeFormat('fa-IR',{hour:'2-digit',minute:'2-digit',second:'2-digit',timeZone:w.tz}).format(now);var d=new Intl.DateTimeFormat('fa-IR',{weekday:'long',timeZone:w.tz}).format(now);var off=tzOff(w.tz);return '<div class="glass p-3 text-center"><div class="font-bold text-[13px]">'+w.l+'</div><div class="font-black text-lg" dir="ltr">'+t+'</div><div class="text-[11px]" style="color:var(--mut)">'+d+' • '+(off>=0?'+':'')+off+' ساعت</div></div>'}).join('')}
+}catch(e){}}
+function tzOff(tz){try{var now=new Date();var te=new Date(now.toLocaleString('en-US',{timeZone:'Asia/Tehran'}));var o=new Date(now.toLocaleString('en-US',{timeZone:tz}));return Math.round((o-te)/3600000)}catch(e){return 0}}
+setInterval(tick,1000);
+function diffTZ(){var a=document.getElementById('tzA').value,b=document.getElementById('tzB').value;var d=tzOff(b)-tzOff(a);document.getElementById('tzOut').textContent='اختلاف '+a+' تا '+b+': '+d+' ساعت'}
+/* MARKET */
+var liveDollar=100000, worldRates=null, goldPerGramUSD=0;
+function marketTab(t){['iran','world','gold','crypto','car','phone'].forEach(function(x){document.getElementById('mpane-'+x).classList.toggle('hidden',x!==t);var b=document.getElementById('mtab-'+x);if(b){if(x===t){b.className='px-4 py-2 rounded-xl text-white';b.style.background='var(--a1)'}else{b.className='px-4 py-2 rounded-xl glass';b.style.background=''}}})}
+async function reloadMarket(){loadIran();loadWorld();loadGold();loadCrypto();renderCars();renderPhones()}
+async function loadIran(){
+try{
+var r=await fetch('https://raw.githubusercontent.com/iran-market/iran-market.github.io/main/data/popular.json');var j=await r.json();var arr=j.data||j;
+function find(s){for(var i=0;i<arr.length;i++)if(arr[i].symbol===s)return arr[i];return null}
+var d=find('USD_IRR_FREE'),e=find('EUR_IRR_FREE'),g=find('GOLD_18K_IRR'),sk=find('COIN_EMAMI_IRR'),tt=find('USDT_IRR'),gb=find('GBP_IRR_FREE');
+if(d)liveDollar=d.price;
+var cards=[[d,'💵','دلار آزاد'],[e,'💶','یورو'],[g,'🥇','طلای ۱۸ عیار'],[sk,'🪙','سکه امامی'],[tt,'₮','تتر'],[gb||e,'💷','پوند']];
+document.getElementById('topMarket').innerHTML=cards.map(function(x){var o=x[0];if(!o)return '<div class="glass p-3">…</div>';return '<div class="glass p-3"><div class="text-xs" style="color:var(--mut)">'+x[1]+' '+x[2]+'</div><div class="kpi">'+numFa(o.price)+'</div><div class="text-[11px]" style="color:var(--mut)">تومان</div></div>'}).join('');
+document.getElementById('iranCards').innerHTML=cards.map(function(x){var o=x[0];if(!o)return '';return '<div class="glass p-3"><div class="text-xs" style="color:var(--mut)">'+x[1]+' '+x[2]+'</div><div class="font-black">'+numFa(o.price)+' <span class="text-[11px] font-normal">تومان</span></div></div>'}).join('');
+var t='<tr><th>نماد</th><th>قیمت (تومان)</th><th>تغییر</th></tr>';
+arr.slice(0,30).forEach(function(o){t+='<tr><td>'+esc(o.name_fa||o.symbol)+'</td><td class="font-bold">'+numFa(o.price)+'</td><td class="text-xs" style="color:var(--mut)">'+(o.change_pct!=null?o.change_pct+'٪':'—')+'</td></tr>'});
+document.getElementById('iranTable').innerHTML=t;
+var mt=document.getElementById('marketTime');if(mt&&j.meta)mt.textContent='به‌روزرسانی: '+esc(j.meta.published_at||'');
+}catch(e){document.getElementById('topMarket').innerHTML='<div class="glass p-3 col-span-4 text-[13px]">❌ دریافت بازار ایران ناموفق — اینترنت را بررسی کن.</div>'}
+renderCars();renderPhones();
+}
+async function loadWorld(){
+try{
+var r=await fetch('https://open.er-api.com/v6/latest/USD');var j=await r.json();worldRates=j.rates;
+var sel='<option value="USD">USD دلار</option>'+Object.keys(worldRates).slice(0,60).map(function(k){return '<option value="'+k+'">'+k+'</option>'}).join('');
+document.getElementById('curFrom').innerHTML=sel;document.getElementById('curTo').innerHTML=sel;
+document.getElementById('curFrom').value='USD';document.getElementById('curTo').value='IRR';
+var tz=document.getElementById('tzA');if(tz&&!tz.options.length){tz.innerHTML=WORLD.map(function(w){return '<option value="'+w.tz+'">'+w.l+'</option>'}).join('');document.getElementById('tzB').innerHTML=tz.innerHTML}
+document.getElementById('worldTable').innerHTML=['EUR','GBP','JPY','AED','TRY','CNY','CAD','CHF','INR','IRR'].map(function(k){var v=worldRates[k];if(!v)return '';return '<div class="flex justify-between p-2 rounded-xl" style="background:var(--bg)"><span>1 USD = '+v+' '+k+'</span><span class="font-bold" dir="ltr">'+k+'</span></div>'}).join('');
+}catch(e){document.getElementById('worldTable').textContent='❌ ناموفق.'}
+}
+function convertCur(){if(!worldRates)return;var a=parseFloat(fa2en(document.getElementById('curAmt').value));var f=document.getElementById('curFrom').value,t=document.getElementById('curTo').value;if(isNaN(a))return;var usd=a/worldRates[f];var out=usd*worldRates[t];document.getElementById('curOut').textContent=a+' '+f+' = '+out.toLocaleString('en-US',{maximumFractionDigits:2})+' '+t}
+async function loadGold(){
+try{var r=await fetch('https://xaus.com/api/v1/spot?compact=1');var j=await r.json();goldPerGramUSD=j.per_gram_usd||(j.spot_usd_oz/31.1035);
+document.getElementById('goldOut').innerHTML='انس: <b>$'+Number(j.spot_usd_oz).toLocaleString('en-US')+'</b><br>گرم: <b>$'+Number(goldPerGramUSD).toFixed(2)+'</b><br>نقره انس: $'+(j.silver_usd_oz||'—')+'<br>بیت‌کوین: $'+Number(j.btc_usd||0).toLocaleString('en-US')+'<br><span class="text-[11px]" style="color:var(--mut)">'+esc(j.updated_at||'')+'</span>'}catch(e){document.getElementById('goldOut').textContent='❌ ناموفق.'}
+}
+function calcGold(){var g=parseFloat(fa2en(document.getElementById('goldGram').value));if(isNaN(g)||!goldPerGramUSD)return;document.getElementById('goldCalcOut').textContent=g+' گرم = $'+(g*goldPerGramUSD).toFixed(2)+' ≈ '+numFa(Math.round(g*goldPerGramUSD*liveDollar))+' تومان (با دلار آزاد)'}
+async function loadCrypto(){
+var out=document.getElementById('cryptoOut');out.textContent='…';
+try{var r=await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,tether,bnb,solana,dogecoin&vs_currencies=usd');var j=await r.json();
+var names={bitcoin:'بیت‌کوین ₿',ethereum:'اتریوم',tether:'تتر',bnb:'BNB',solana:'سولانا',dogecoin:'دوج'};
+out.innerHTML=Object.keys(names).map(function(k){var u=j[k]?j[k].usd:0;var t=Math.round(u*liveDollar);return '<div class="p-3 rounded-2xl" style="background:var(--bg);border:1px solid var(--border)"><div class="font-bold text-[13px]">'+names[k]+'</div><div dir="ltr" class="font-black">$'+Number(u).toLocaleString('en-US')+'</div><div class="text-xs" style="color:var(--mut)">≈ '+numFa(t)+' تومان</div></div>'}).join('')}catch(e){out.textContent='❌ ناموفق — کمی بعد تلاش کن.'}
+}
+var CARS=[{n:'پژو ۲۰۷ سقف‌شیشه‌ای',p:785000000},{n:'دنا پلاس توربو',p:1050000000},{n:'شاهین G',p:830000000},{n:'تیگو ۷ پرو',p:2350000000},{n:'فیدلیتی پرایم',p:1980000000},{n:'کوییک S',p:485000000},{n:'ساینا S',p:495000000},{n:'هایما S7',p:1890000000},{n:'جک J7',p:2150000000},{n:'ری‌را',p:1490000000}];
+function renderCars(){var el=document.getElementById('carTable');if(!el)return;el.innerHTML='<tr><th>خودرو</th><th>تومان (مرجع)</th><th>معادل دلاری</th></tr>'+CARS.map(function(c){var d=Math.round(c.p/liveDollar);return '<tr><td>'+c.n+'</td><td class="font-bold">'+numFa(c.p)+'</td><td dir="ltr">$'+d.toLocaleString('en-US')+'</td></tr>'}).join('')}
+var PHONES=[{n:'iPhone 13 128GB',u:550},{n:'iPhone 15 Pro 256GB',u:1050},{n:'Galaxy A54 128GB',u:320},{n:'Galaxy S24 Ultra',u:1150},{n:'Redmi Note 13',u:190},{n:'Poco X6 Pro',u:290},{n:'Pixel 8',u:650},{n:'Nothing Phone 2',u:550}];
+function renderPhones(){var el=document.getElementById('phoneTable');if(!el)return;el.innerHTML='<tr><th>مدل</th><th>دلار جهانی</th><th>تومان (زنده)</th></tr>'+PHONES.map(function(c){var t=Math.round(c.u*liveDollar);return '<tr><td>'+c.n+'</td><td dir="ltr">$'+c.u+'</td><td class="font-bold">'+numFa(t)+'</td></tr>'}).join('')}
+/* NEWS */
+var FEEDS={bbc:'https://feeds.bbci.co.uk/persian/rss.xml',dw:'https://www.dw.com/fa/rss/fa-all',rfi:'https://www.rfi.fr/fa/rss'};
+async function loadNews(){var k=document.getElementById('newsSrc').value;var url=FEEDS[k];var box=document.getElementById('newsList');box.textContent='در حال دریافت…';try{var r=await fetch('https://api.rss2json.com/v1/api.json?rss_url='+encodeURIComponent(url));var j=await r.json();box.innerHTML=(j.items||[]).slice(0,8).map(function(i){return '<a href="'+i.link+'" target="_blank" class="glass hover-lift p-3 block">📌 '+esc(i.title)+'</a>'}).join('')||'خبری نیست.';document.getElementById('newsFeed').innerHTML=(j.items||[]).slice(0,4).map(function(i){return '<a href="'+i.link+'" target="_blank" class="glass p-2 block text-[12px]">📌 '+esc(i.title)+'</a>'}).join('')}catch(e){box.textContent='❌ ناموفق.'}}
+/* DASH widgets */
+async function loadWeather(){var out=document.getElementById('weather');var city=(document.getElementById('cityIn').value||'تهران').trim();out.textContent='…';try{var lat=35.69,lon=51.42,label='تهران';if(city!=='تهران'){var g=await(await fetch('https://geocoding-api.open-meteo.com/v1/search?name='+encodeURIComponent(city)+'&count=1&language=fa&format=json')).json();if(g.results&&g.results[0]){lat=g.results[0].latitude;lon=g.results[0].longitude;label=g.results[0].name}}var r=await fetch('https://api.open-meteo.com/v1/forecast?latitude='+lat+'&longitude='+lon+'&current=temperature_2m,wind_speed_10m,weather_code&timezone=auto');var j=await r.json();document.getElementById('wCity').textContent=label;out.innerHTML='🌡 <b>'+j.current.temperature_2m+'°C</b> • 💨 '+j.current.wind_speed_10m+' km/h'}catch(e){out.textContent='❌ ناموفق.'}}
+async function refreshIP(){var el=document.getElementById('ipInfo');el.textContent='…';try{var j=await(await fetch('https://ipapi.co/json/')).json();el.innerHTML='IP: <b dir="ltr">'+esc(j.ip)+'</b> • '+esc(j.city||'')+'، '+esc(j.country_name||'')}catch(e){el.textContent='❌ ناموفق.'}}
+async function speedTest(){var out=document.getElementById('speedOut');out.textContent='⏳…';try{var t0=performance.now();var r=await fetch('https://speed.cloudflare.com/__down?bytes=2000000',{cache:'no-store'});var b=await r.blob();var s=(performance.now()-t0)/1000;out.innerHTML='⬇️ <b>'+((b.size*8/1e6)/s).toFixed(2)+' Mbps</b>'}catch(e){out.textContent='❌ ناموفق.'}}
+/* todo */
+function getTodos(){try{return JSON.parse(localStorage.getItem('sina_todos')||'[]')}catch(e){return[]}}
+function saveTodos(t){try{localStorage.setItem('sina_todos',JSON.stringify(t))}catch(e){}renderTodos()}
+function renderTodos(){var ul=document.getElementById('todoList');if(!ul)return;var ts=getTodos();ul.innerHTML=ts.length?ts.map(function(t,i){return '<li class="flex items-center gap-2 p-1.5 rounded-xl '+(t.done?'opacity-50 line-through':'')+'" style="background:var(--bg)"><input type="checkbox" '+(t.done?'checked':'')+' onchange="toggleTodo('+i+')"><span class="flex-1">'+esc(t.text)+'</span><button onclick="delTodo('+i+')" class="text-red-400">✕</button></li>'}).join(''):'<li class="text-xs opacity-60">کاری نیست.</li>'}
+function addTodo(){var v=document.getElementById('todoIn').value.trim();if(!v)return;var ts=getTodos();ts.push({text:v,done:false});document.getElementById('todoIn').value='';saveTodos(ts)}
+function toggleTodo(i){var ts=getTodos();ts[i].done=!ts[i].done;saveTodos(ts)}
+function delTodo(i){var ts=getTodos();ts.splice(i,1);saveTodos(ts)}
+function saveNote(){try{localStorage.setItem('sina_note',document.getElementById('quickNote').value)}catch(e){}}
+/* AI */
+var lastBot='';
+function bubble(t,me){var b=document.getElementById('chatBox');var d=document.createElement('div');d.className='p-2.5 rounded-2xl max-w-[88%] '+(me?'text-white mr-auto':'');if(me)d.style.background='linear-gradient(135deg,var(--a1),var(--a2))';else{d.style.background='var(--card)';d.style.border='1px solid var(--border)'}d.innerHTML=t;b.appendChild(d);b.scrollTop=b.scrollHeight;return d}
+function sendAI(){var q=document.getElementById('aiInput').value.trim();if(!q)return;document.getElementById('aiInput').value='';bubble('🗣 '+esc(q),true);var th=bubble('…');var enc=encodeURIComponent(q);fetch('https://fa.wikipedia.org/api/rest_v1/page/summary/'+enc).then(function(r){return r.ok?r.json():Promise.reject()}).then(function(j){if(j.extract){th.innerHTML='🤖 '+esc(j.extract);lastBot=j.extract}else throw 0}).catch(function(){fetch('https://api.duckduckgo.com/?q='+enc+'&format=json&no_html=1&skip_disambig=1').then(function(r){return r.json()}).then(function(j){var a=j.AbstractText||(j.RelatedTopics&&j.RelatedTopics[0]?(j.RelatedTopics[0].Text||''):'')||('🔍 <a class="underline" target="_blank" href="https://duckduckgo.com/?q='+enc+'">جست‌وجو</a>');th.innerHTML='🤖 '+a;lastBot=th.innerText}).catch(function(){th.innerHTML='❌ اتصال ناموفق.'})})}
+function clearChat(){document.getElementById('chatBox').innerHTML='';bubble('سلام! 👋')}
+function voiceAI(){var SR=window.SpeechRecognition||window.webkitSpeechRecognition;if(!SR){alert('پشتیبانی نمی‌شود');return}var r=new SR();r.lang='fa-IR';r.onresult=function(e){document.getElementById('aiInput').value=e.results[0][0].transcript;sendAI()};r.start()}
+function speakTTS(t){try{speechSynthesis.cancel();var u=new SpeechSynthesisUtterance(t);u.lang='fa-IR';speechSynthesis.speak(u)}catch(e){}}
+function speakLast(){if(lastBot)speakTTS(lastBot)}
+/* translate */
+var LANGS={fa:'فارسی',en:'انگلیسی',ar:'عربی',tr:'ترکی',de:'آلمانی',fr:'فرانسوی',es:'اسپانیایی',ru:'روسی',zh:'چینی',ja:'ژاپنی',hi:'هندی',it:'ایتالیایی',ur:'اردو'};
+function initLangs(){document.getElementById('fromLang').innerHTML=Object.entries(LANGS).map(function(e){return '<option value="'+e[0]+'" '+(e[0]==='fa'?'selected':'')+'>'+e[1]+'</option>'}).join('');document.getElementById('toLang').innerHTML=Object.entries(LANGS).map(function(e){return '<option value="'+e[0]+'" '+(e[0]==='en'?'selected':'')+'>'+e[1]+'</option>'}).join('')}
+function swapLangs(){var f=document.getElementById('fromLang'),t=document.getElementById('toLang');var v=f.value;f.value=t.value;t.value=v}
+async function doTranslate(){var s=document.getElementById('trSrc').value.trim();if(!s)return;document.getElementById('trDst').value='…';try{var f=document.getElementById('fromLang').value,t=document.getElementById('toLang').value;var r=await fetch('https://api.mymemory.translated.net/get?q='+encodeURIComponent(s)+'&langpair='+f+'|'+t);var j=await r.json();document.getElementById('trDst').value=j.responseData?j.responseData.translatedText:'ناموفق'}catch(e){document.getElementById('trDst').value='❌ خطا.'}}
+function copyTr(){if(navigator.clipboard)navigator.clipboard.writeText(document.getElementById('trDst').value)}
+function speakDst(){speakTTS(document.getElementById('trDst').value)}
+/* office */
+function fmt(c){document.execCommand(c,false,null);document.getElementById('wordDoc').focus()}
+function countWords(){var tx=document.getElementById('wordDoc').innerText||'';var w=tx.trim()?tx.trim().split(/\s+/).length:0;document.getElementById('wordCount').textContent=w+' کلمه';try{localStorage.setItem('sina_word',document.getElementById('wordDoc').innerHTML)}catch(e){}}
+function dlWord(){dl('sina-word.html','<meta charset="utf-8">'+document.getElementById('wordDoc').innerHTML,'text/html')}
+function officeTab(t){['word','excel','ppt','pdf'].forEach(function(x){document.getElementById('pane-'+x).classList.toggle('hidden',x!==t)})}
+var ER=6,EC=5;
+function renderGrid(){var h='<tr><th></th>';for(var c=0;c<EC;c++)h+='<th>'+String.fromCharCode(65+c)+'</th>';h+='</tr>';for(var r=1;r<=ER;r++){h+='<tr><th>'+r+'</th>';for(var k=0;k<EC;k++)h+='<td><input data-cell="'+String.fromCharCode(65+k)+r+'" class="w-full bg-transparent p-1.5 outline-none text-center" onchange="evalCell(this)"></td>';h+='</tr>'}document.getElementById('xlsx').innerHTML=h}
+function addRow(){ER++;renderGrid()}function addCol(){EC++;renderGrid()}
+function evalCell(inp){var v=fa2en(inp.value.trim());if(!v){inp.dataset.val='';updateSum();return}if(v[0]==='='){try{var ex=v.slice(1);ex=ex.replace(/SUM\(([A-Z]+[0-9]+):([A-Z]+[0-9]+)\)/gi,function(m,a,b){function cn(s){var n=0;for(var i=0;i<s.length;i++)n=n*26+(s.charCodeAt(i)-64);return n}var p1=a.match(/([A-Z]+)([0-9]+)/),p2=b.match(/([A-Z]+)([0-9]+)/);var s=0;for(var rr=Math.min(+p1[2],+p2[2]);rr<=Math.max(+p1[2],+p2[2]);rr++)for(var cc=Math.min(cn(p1[1]),cn(p2[1]));cc<=Math.max(cn(p1[1]),cn(p2[1]));cc++){var col='',n=cc;while(n>0){var mm=(n-1)%26;col=String.fromCharCode(65+mm)+col;n=Math.floor((n-1)/26)}var ref=document.querySelector('[data-cell="'+col+rr+'"]');var vv=parseFloat(ref?ref.dataset.val:'0');if(!isNaN(vv))s+=vv}return s});ex=ex.replace(/[A-Z]+[0-9]+/g,function(m){var ref=document.querySelector('[data-cell="'+m+'"]');var n=parseFloat(ref?ref.dataset.val:'0');return isNaN(n)?0:n});if(!/^[0-9+\-*/().\s^%]+$/.test(ex))throw 0;ex=ex.replace(/\^/g,'**');var res=Function('"use strict";return('+ex+')')();inp.dataset.val=res;inp.value=res}catch(e){inp.value='#خطا'}}else{var n=parseFloat(v);inp.dataset.val=isNaN(n)?v:n}updateSum()}
+function updateSum(){var s=0;document.querySelectorAll('#xlsx input').forEach(function(i){var n=parseFloat(i.dataset.val);if(!isNaN(n))s+=n});document.getElementById('excelSum').textContent='جمع: '+s}
+function exportCSV(){var csv='﻿';for(var r=1;r<=ER;r++){var row=[];for(var c=0;c<EC;c++){var el=document.querySelector('[data-cell="'+String.fromCharCode(65+c)+r+'"]');row.push('"'+String(el?(el.dataset.val||''):'').replace(/"/g,'""')+'"')}csv+=row.join(',')+'\n'}dl('sina.csv',csv,'text/csv')}
+var slides=[{t:'اسلاید ۱',d:'متن…'}],si=0,pi=0;var pptC=['#ffffff','#fef3c7','#dbeafe','#fce7f3','#dcfce7'];
+function renderSlide(){document.getElementById('slideT').innerText=slides[si].t;document.getElementById('slideD').innerText=slides[si].d;document.getElementById('slide').style.background=pptC[pi%pptC.length];document.getElementById('slideNum').textContent='اسلاید '+(si+1)+' از '+slides.length}
+function syncSlide(){slides[si].t=document.getElementById('slideT').innerText;slides[si].d=document.getElementById('slideD').innerText}
+function addSlide(){slides.push({t:'اسلاید '+(slides.length+1),d:'متن…'});si=slides.length-1;renderSlide()}
+function delSlide(){if(slides.length>1){slides.splice(si,1);si=Math.max(0,si-1);renderSlide()}}
+function nextSlide(){si=(si+1)%slides.length;renderSlide()}function prevSlide(){si=(si-1+slides.length)%slides.length;renderSlide()}
+function changeSlideBg(){pi=(pi+1)%pptC.length;document.getElementById('slide').style.background=pptC[pi]}
+function loadPDF(i){var f=i.files[0];if(f)document.getElementById('pdfFrame').src=URL.createObjectURL(f)}
+/* games */
+function gameTab(t){['mini','embed','store'].forEach(function(x){document.getElementById('gpane-'+x).classList.toggle('hidden',x!==t)})}
+var STORE=[{t:'سینا ریسینگ',d:'ویندوز',p:'رایگان',i:'fa-car-side'},{t:'سینا فایتر',d:'اندروید',p:'۹۹٬۰۰۰',i:'fa-jet-fighter'},{t:'پازل مستر',d:'معمایی',p:'رایگان',i:'fa-puzzle-piece'}];
+var secret=50;function resetGuess(){secret=Math.floor(Math.random()*100)+1;document.getElementById('guessOut').textContent='عدد ۱ تا ۱۰۰ انتخاب شد.';document.getElementById('guessNum').value=''}
+function checkGuess(){var v=parseInt(fa2en(document.getElementById('guessNum').value));var o=document.getElementById('guessOut');if(isNaN(v)){o.textContent='عدد بزن.';return}if(v===secret)o.textContent='🎉 درست!';else if(v<secret)o.textContent='⬆️ بزرگ‌تر';else o.textContent='⬇️ کوچک‌تر'}
+var memVals=[],memDone=[],memOpen=[],memLock=false,memFound=0;var MI={1:'🍎',2:'🚗',3:'⚽',4:'🎵'};
+function initMem(){memVals=[1,1,2,2,3,3,4,4].sort(function(){return Math.random()-.5});memDone=Array(8).fill(false);memOpen=[];memLock=false;memFound=0;renderMem();document.getElementById('memStat').textContent='جفت‌ها را پیدا کن'}
+function renderMem(){document.getElementById('memGrid').innerHTML=memVals.map(function(v,i){var s=memOpen.indexOf(i)>-1||memDone[i];return '<button '+(memDone[i]?'disabled':'')+' onclick="flipMem('+i+')" class="h-12 rounded-xl text-xl" style="background:'+(s?'var(--a1);color:#fff':'var(--bg)')+';border:1px solid var(--border)">'+(s?MI[v]:'؟')+'</button>'}).join('')}
+function flipMem(i){if(memLock||memDone[i]||memOpen.indexOf(i)>-1)return;memOpen.push(i);renderMem();if(memOpen.length===2){memLock=true;var a=memOpen[0],b=memOpen[1];if(memVals[a]===memVals[b])setTimeout(function(){memDone[a]=memDone[b]=true;memOpen=[];memLock=false;memFound++;renderMem();document.getElementById('memStat').textContent='یافت: '+memFound+' / ۴'+(memFound===4?' 🎉':'')},350);else setTimeout(function(){memOpen=[];memLock=false;renderMem()},650)}}
+var ticCells=Array(9).fill(''),ticTurn='X',ticOver=false;
+function ticWin(){var L=[[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];for(var k=0;k<L.length;k++){var a=L[k][0],b=L[k][1],c=L[k][2];if(ticCells[a]&&ticCells[a]===ticCells[b]&&ticCells[b]===ticCells[c])return ticCells[a]}return null}
+function drawTic(){document.getElementById('ticGrid').innerHTML=ticCells.map(function(v,i){return '<button onclick="ticClick('+i+')" class="h-14 rounded-xl text-xl font-black glass">'+(v||'')+'</button>'}).join('');var w=ticWin();document.getElementById('ticStat').textContent=ticOver?(w?'🏆 '+w:'🤝 مساوی'):('نوبت '+ticTurn)}
+function ticClick(i){if(ticOver||ticCells[i])return;ticCells[i]=ticTurn;var w=ticWin();if(w)ticOver=true;else if(ticCells.indexOf('')===-1)ticOver=true;else ticTurn=ticTurn==='X'?'O':'X';drawTic()}
+function resetTic(){ticCells=Array(9).fill('');ticTurn='X';ticOver=false;drawTic()}
+var mathA=5,mathB=7;function newMath(){mathA=Math.floor(Math.random()*20)+1;mathB=Math.floor(Math.random()*20)+1;document.getElementById('mathQ').textContent=mathA+' + '+mathB+' = ؟';document.getElementById('mAns').value='';document.getElementById('mathOut').textContent=''}
+function checkMath(){var v=parseInt(fa2en(document.getElementById('mAns').value));if(v===mathA+mathB){document.getElementById('mathOut').textContent='🎉';setTimeout(newMath,700)}else document.getElementById('mathOut').textContent='❌'}
+/* tools */
+function doCalc(){try{var e=fa2en(document.getElementById('calcIn').value);if(!/^[0-9+\-*/().\s^%]+$/.test(e))throw 0;e=e.replace(/\^/g,'**');document.getElementById('calcOut').textContent='= '+Function('"use strict";return('+e+')')()}catch(e){document.getElementById('calcOut').textContent='خطا'}}
+function genPass(){var l=parseInt(document.getElementById('passLen').value)||14;var ch='ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnpqrstuvwxyz23456789!@#$%';var p='',a=new Uint32Array(l);crypto.getRandomValues(a);for(var i=0;i<l;i++)p+=ch[a[i]%ch.length];document.getElementById('passOut').textContent=p}
+function copyPass(){if(navigator.clipboard)navigator.clipboard.writeText(document.getElementById('passOut').textContent)}
+function makeQR(){var t=document.getElementById('qrIn').value||'SinaWeb';document.getElementById('qrImg').src='https://api.qrserver.com/v1/create-qr-code/?size=150x150&data='+encodeURIComponent(t)}
+function b64Enc(){try{document.getElementById('b64Out').textContent=btoa(unescape(encodeURIComponent(document.getElementById('b64In').value)))}catch(e){document.getElementById('b64Out').textContent='خطا'}}
+function b64Dec(){try{document.getElementById('b64Out').textContent=decodeURIComponent(escape(atob(document.getElementById('b64In').value.trim())))}catch(e){document.getElementById('b64Out').textContent='خطا'}}
+function copyColor(){if(navigator.clipboard)navigator.clipboard.writeText(document.getElementById('colorHex').textContent)}
+function unitConvert(){var v=parseFloat(fa2en(document.getElementById('unitIn').value));var t=document.getElementById('unitType').value,o=document.getElementById('unitOut');if(isNaN(v)){o.textContent='عدد؟';return}if(t==='cm-m')o.textContent=v+'cm = '+(v/100)+'m';else if(t==='m-km')o.textContent=v+'m = '+(v/1000)+'km';else if(t==='km-mile')o.textContent=v+'km = '+(v*0.621371).toFixed(3)+' mile';else if(t==='kg-lb')o.textContent=v+'kg = '+(v*2.20462).toFixed(2)+' lb';else o.textContent=v+'°C = '+(v*9/5+32)+'°F'}
+var swE=0,swT=null,swB=0;function swF(ms){var t=Math.floor(ms/100),cs=t%10,s=Math.floor(t/10)%60,m=Math.floor(t/600);function p(n){return (n<10?'0':'')+n}return p(m)+':'+p(s)+'.'+cs}
+function swStart(){if(swT)return;swB=Date.now()-swE;swT=setInterval(function(){swE=Date.now()-swB;document.getElementById('swTime').textContent=swF(swE)},100)}
+function swPause(){clearInterval(swT);swT=null}function swReset(){swPause();swE=0;document.getElementById('swTime').textContent='00:00.0'}
+var tmI=null;function startTimer(){var m=parseFloat(document.getElementById('timerMin').value)||5;var end=Date.now()+m*60000;clearInterval(tmI);tmI=setInterval(function(){var d=end-Date.now();if(d<=0){clearInterval(tmI);document.getElementById('timerOut').textContent='⏰ تمام!';return}var mm=Math.floor(d/60000),ss=Math.floor(d%60000/1000);document.getElementById('timerOut').textContent=(mm<10?'0':'')+mm+':'+(ss<10?'0':'')+ss},500)}
+function stopTimer(){clearInterval(tmI);document.getElementById('timerOut').textContent=''}
+function calcBMI(){var h=parseFloat(fa2en(document.getElementById('bmiH').value)),w=parseFloat(fa2en(document.getElementById('bmiW').value));if(!h||!w)return;var b=w/((h/100)*(h/100));document.getElementById('bmiOut').textContent='BMI = '+b.toFixed(1)+(b<18.5?' • کم‌وزن':b<25?' • نرمال ✓':b<30?' • اضافه‌وزن':' • چاق')}
+function calcAge(){var y=parseInt(fa2en(document.getElementById('birthY').value));if(!y)return;var now=new Intl.DateTimeFormat('fa-IR-u-nu-latn',{year:'numeric'}).format(new Date());var age=parseInt(now)-y;document.getElementById('ageOut').textContent='حدود '+age+' سال'}
+function countChar(){var t=document.getElementById('charIn').value;var w=t.trim()?t.trim().split(/\s+/).length:0;document.getElementById('charOut').textContent=w+' کلمه • '+t.length+' نویسه'}
+function formatJSON(){try{var o=JSON.parse(document.getElementById('jsonIn').value);document.getElementById('jsonOut').textContent=JSON.stringify(o,null,2)}catch(e){document.getElementById('jsonOut').textContent='JSON نامعتبر'}}
+function genUUID(){var u=crypto.randomUUID?crypto.randomUUID():'xxxx'.replace(/x/g,function(){return Math.floor(Math.random()*16).toString(16)});document.getElementById('jsonOut').textContent=u}
+function calcDis(){var p=parseFloat(fa2en(document.getElementById('disPrice').value)),d=parseFloat(fa2en(document.getElementById('disPct').value));if(isNaN(p)||isNaN(d))return;var f=p-p*d/100;document.getElementById('disOut').textContent='نهایی: '+numFa(Math.round(f))+' تومان'}
+function numWords(){var n=document.getElementById('numFa').value;document.getElementById('numFaOut').textContent=n?numFa(n)+' تومان':'—'}
+/* cloud */
+function cloudFiles(){try{return JSON.parse(localStorage.getItem('sinaCloud')||'[]')}catch(e){return[]}}
+function saveCloud(f){try{localStorage.setItem('sinaCloud',JSON.stringify(f))}catch(e){alert('حافظه پر شد')}renderCloud()}
+function uploadFiles(inp){for(var i=0;i<inp.files.length;i++)(function(f){if(f.size>4*1024*1024){alert(f.name+' بیش از ۴ مگ');return}var r=new FileReader();r.onload=function(){var a=cloudFiles();a.push({name:f.name,size:f.size,data:r.result});saveCloud(a)};r.readAsDataURL(f)})(inp.files[i]);inp.value=''}
+function renderCloud(){var q=(document.getElementById('cloudSearch').value||'').trim();var all=cloudFiles();var fl=q?all.filter(function(f){return f.name.indexOf(q)>-1}):all;var used=all.reduce(function(s,f){return s+f.size},0);var pct=Math.min(100,used/(5*1024*1024)*100);document.getElementById('cloudBar').style.width=pct+'%';document.getElementById('cloudPct').textContent=pct.toFixed(1)+'%';document.getElementById('fileList').innerHTML=fl.length?fl.map(function(f){var ix=all.indexOf(f);return '<div class="glass p-3 text-[13px]"><p class="font-bold truncate">📄 '+esc(f.name)+'</p><a href="'+f.data+'" download="'+esc(f.name)+'" class="underline text-xs">⬇️ دانلود</a> <button onclick="delFile('+ix+')" class="text-red-400 text-xs">🗑</button></div>'}).join(''):'<p class="text-xs opacity-60">فایلی نیست.</p>'}
+function delFile(i){var a=cloudFiles();a.splice(i,1);saveCloud(a)}
+/* browser */
+function browse(){var u=document.getElementById('urlBar').value.trim();if(!/^https?:\/\//i.test(u))u='https://'+u;document.getElementById('browserFrame').src=u}
+function quickGo(u){document.getElementById('urlBar').value=u;browse()}
+function openExternal(){window.open(document.getElementById('browserFrame').src,'_blank')}
+async function searchWiki(){var q=document.getElementById('wikiQ').value.trim();var o=document.getElementById('wikiOut');if(!q)return;o.textContent='…';try{var j=await(await fetch('https://fa.wikipedia.org/w/api.php?action=query&list=search&srsearch='+encodeURIComponent(q)+'&format=json&origin=*')).json();o.innerHTML=j.query.search.slice(0,5).map(function(s){return '<a href="https://fa.wikipedia.org/wiki/'+encodeURIComponent(s.title)+'" target="_blank" class="block p-2 rounded-xl" style="background:var(--bg)">📖 '+esc(s.title)+'</a>'}).join('')}catch(e){o.textContent='❌'}}
+async function openProxy(){var u=document.getElementById('proxyUrl').value.trim();var o=document.getElementById('proxyOut');if(!u)return;o.textContent='…';try{var t=await(await fetch('https://r.jina.ai/'+(/^http/i.test(u)?u:'https://'+u))).text();o.textContent=t.slice(0,1200)+' …'}catch(e){o.textContent='❌'}}
+/* themes */
+var THEMES=[{id:'fresh',n:'مدرن',c1:'#6366f1',c2:'#06b6d4'},{id:'ocean',n:'اقیانوس',c1:'#0284c7',c2:'#22d3ee'},{id:'sunset',n:'غروب',c1:'#f43f5e',c2:'#f59e0b'},{id:'forest',n:'جنگلی',c1:'#059669',c2:'#a3e635'},{id:'violet',n:'بنفش',c1:'#7c3aed',c2:'#ec4899'},{id:'mono',n:'تک‌رنگ',c1:'#0f172a',c2:'#94a3b8'}];
+function buildThemes(){var cur=document.body.dataset.theme;var h=THEMES.map(function(t){return '<button onclick="setTheme(\''+t.id+'\')" title="'+t.n+'" class="h-9 rounded-xl" style="background:linear-gradient(135deg,'+t.c1+','+t.c2+');'+(cur===t.id?'outline:2px solid var(--a1);outline-offset:2px':'')+'"></button>'}).join('');document.getElementById('themeGrid').innerHTML=h;var s=document.getElementById('settingsThemeGrid');if(s)s.innerHTML=h}
+function setTheme(t){document.body.dataset.theme=t;try{localStorage.setItem('sina_theme_name',t)}catch(e){}buildThemes()}
+function exportData(){var d={};for(var i=0;i<localStorage.length;i++){var k=localStorage.key(i);if(k&&k.indexOf('sina_')===0)d[k]=localStorage.getItem(k)}dl('sina-backup.json',JSON.stringify(d),'application/json')}
+function importData(i){var f=i.files[0];if(!f)return;var r=new FileReader();r.onload=function(){try{var j=JSON.parse(r.result);Object.keys(j).forEach(function(k){localStorage.setItem(k,j[k])});location.reload()}catch(e){alert('نامعتبر')}};r.readAsText(f)}
+/* ===== SETTINGS ===== */
+function setFont(s){document.documentElement.classList.remove('fs-s','fs-m','fs-l');document.documentElement.classList.add('fs-'+s);try{localStorage.setItem('sina_fs',s)}catch(e){}}
+function toggleNotifSet(el){try{localStorage.setItem('sina_notif',el.checked?'1':'0')}catch(e){}}
+function toggleAuto(el){try{localStorage.setItem('sina_auto',el.checked?'1':'0')}catch(e){}setupAuto()}
+var autoI=null;function setupAuto(){try{if(localStorage.getItem('sina_auto')==='1'){if(autoI)clearInterval(autoI);autoI=setInterval(function(){loadIran()},30*60*1000)}}catch(e){}}
+function resetAll(){if(!confirm('همهٔ داده‌های سینا وب پاک شود؟'))return;Object.keys(localStorage).filter(function(k){return k.indexOf('sina_')===0}).forEach(function(k){localStorage.removeItem(k)});location.reload()}
+function storeSize(){try{var s=0;for(var i=0;i<localStorage.length;i++){var k=localStorage.key(i);if(k&&k.indexOf('sina_')===0)s+=localStorage.getItem(k).length}document.getElementById('storeSize').textContent=(s/1024).toFixed(1)+' KB'}catch(e){}}
+/* ===== CALENDAR ===== */
+function jalParts(d){try{var p=new Intl.DateTimeFormat('fa-IR-u-nu-latn',{year:'numeric',month:'numeric',day:'numeric',timeZone:'Asia/Tehran'}).formatToParts(d);var o={};p.forEach(function(x){o[x.type]=x.value});return {y:parseInt(o.year),m:parseInt(o.month),d:parseInt(o.day)}}catch(e){return{y:1403,m:1,d:1}}}
+function renderCal(){var now=new Date();var t=jalParts(now);var first=new Date(now);first.setDate(now.getDate()-(t.d-1));var off=(first.getDay()+1)%7;var label=new Intl.DateTimeFormat('fa-IR',{year:'numeric',month:'long'}).format(now);document.getElementById('calLabel').textContent=label;var h='';for(var i=0;i<off;i++)h+='<div></div>';for(var k=0;k<31;k++){var dd=new Date(first);dd.setDate(first.getDate()+k);var p=jalParts(dd);if(p.m!==t.m)break;var isT=(p.d===t.d);h+='<div class="cal-day '+(isT?'cal-today':'glass')+'">'+p.d+'</div>'}document.getElementById('calGrid').innerHTML=h}
+/* ===== POMODORO ===== */
+var pomS=25*60,pomLeft=25*60,pomI=null;
+function pomFmt(s){var m=Math.floor(s/60),r=s%60;return (m<10?'0':'')+m+':'+(r<10?'0':'')+r}
+function pomDraw(){document.getElementById('pomTime').textContent=pomFmt(pomLeft)}
+function pomSet(m){pomS=m*60;pomLeft=pomS;pomDraw();document.getElementById('pomStat').textContent='حالت '+m+' دقیقه‌ای آماده است'}
+function pomStart(){if(pomI)return;pomI=setInterval(function(){if(pomLeft<=0){clearInterval(pomI);pomI=null;document.getElementById('pomStat').textContent='⏰ تمام شد!';try{new Audio('https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3').play()}catch(e){}return}pomLeft--;pomDraw()},1000)}
+function pomPause(){clearInterval(pomI);pomI=null}
+function pomReset(){pomPause();pomLeft=pomS;pomDraw()}
+/* ===== PAINT ===== */
+var paintOn=false;
+function initPaint(){var cv=document.getElementById('paintCv');if(!cv)return;function pos(e){var r=cv.getBoundingClientRect();var x=(e.touches?e.touches[0].clientX:e.clientX)-r.left;var y=(e.touches?e.touches[0].clientY:e.clientY)-r.top;return{x:x*cv.width/r.width,y:y*cv.height/r.height}}function sizeCv(){cv.width=cv.offsetWidth;cv.height=320}sizeCv();addEventListener('resize',sizeCv);var ctx=cv.getContext('2d');ctx.lineCap='round';var last=null;cv.addEventListener('mousedown',function(e){paintOn=true;last=pos(e)});cv.addEventListener('mousemove',function(e){if(!paintOn)return;var p=pos(e);ctx.strokeStyle=document.getElementById('paintColor').value;ctx.lineWidth=document.getElementById('paintSize').value;ctx.beginPath();ctx.moveTo(last.x,last.y);ctx.lineTo(p.x,p.y);ctx.stroke();last=p});addEventListener('mouseup',function(){paintOn=false});cv.addEventListener('touchstart',function(e){paintOn=true;last=pos(e);e.preventDefault()},{passive:false});cv.addEventListener('touchmove',function(e){if(!paintOn)return;var p=pos(e);ctx.strokeStyle=document.getElementById('paintColor').value;ctx.lineWidth=document.getElementById('paintSize').value;ctx.beginPath();ctx.moveTo(last.x,last.y);ctx.lineTo(p.x,p.y);ctx.stroke();last=p;e.preventDefault()},{passive:false});cv.addEventListener('touchend',function(){paintOn=false})}
+function clearPaint(){var cv=document.getElementById('paintCv');cv.getContext('2d').clearRect(0,0,cv.width,cv.height)}
+function savePaint(){var cv=document.getElementById('paintCv');var a=document.createElement('a');a.href=cv.toDataURL('image/png');a.download='sina-paint.png';a.click()}
+/* ===== NOTES APP ===== */
+function getNotes(){try{return JSON.parse(localStorage.getItem('sina_notes')||'[]')}catch(e){return[]}}
+function renderNotes(){var el=document.getElementById('notesList');if(!el)return;var n=getNotes();el.innerHTML=n.length?n.map(function(x,i){return '<div class="glass p-3"><b class="text-[13px]">'+esc(x.t||'بدون عنوان')+'</b><p class="text-xs mt-1" style="color:var(--mut)">'+esc(x.d||'').slice(0,120)+'</p><button onclick="delNote('+i+')" class="text-xs mt-1" style="color:#ef4444">حذف</button></div>'}).join(''):'<p class="text-xs opacity-60">یادداشتی نیست.</p>';storeSize()}
+function addNote(){var t=document.getElementById('noteTitle').value.trim(),d=document.getElementById('noteBody').value.trim();if(!t&&!d)return;var n=getNotes();n.unshift({t:t,d:d});try{localStorage.setItem('sina_notes',JSON.stringify(n))}catch(e){}document.getElementById('noteTitle').value='';document.getElementById('noteBody').value='';renderNotes()}
+function delNote(i){var n=getNotes();n.splice(i,1);try{localStorage.setItem('sina_notes',JSON.stringify(n))}catch(e){}renderNotes()}
+/* ===== DICT ===== */
+async function lookupDict(){var q=document.getElementById('dictQ').value.trim().toLowerCase();var o=document.getElementById('dictOut');if(!q)return;o.textContent='…';try{var j=await(await fetch('https://api.dictionaryapi.dev/api/v2/entries/en/'+encodeURIComponent(q))).json();if(j.title){o.textContent='❌ یافت نشد.';return}o.innerHTML=j.slice(0,2).map(function(e){return '<div class="glass p-3"><b dir="ltr">'+esc(e.word)+'</b> <span class="text-xs" style="color:var(--mut)">'+esc(e.phonetic||'')+'</span>'+(e.meanings||[]).slice(0,2).map(function(m){return '<p class="text-xs mt-1"><b>'+esc(m.partOfSpeech||'')+'</b>: '+esc((m.definitions[0]||{}).definition||'')+'</p>'}).join('')+'</div>'}).join('')}catch(e){o.textContent='❌ خطا در اتصال.'}}
+/* init */
+try{curLang=localStorage.getItem('sina_lang')||'fa'}catch(e){}
+buildNav();buildCards();initLangs();applyLang();
+document.getElementById('gpane-store').innerHTML=STORE.map(function(g){return '<div class="glass p-4 text-center"><i class="fas '+g.i+' text-3xl acc-text"></i><h3 class="font-bold text-sm mt-1">'+g.t+'</h3><p class="text-xs opacity-60">'+g.d+' • '+g.p+'</p><button onclick="alert(\'به‌زودی\')" class="btn-acc mt-2">دانلود</button></div>'}).join('');
+renderGrid();renderCloud();renderTodos();initMem();resetTic();newMath();resetGuess();renderSlide();netStat();tick();renderCal();renderNotes();initPaint();pomDraw();
+try{
+var tn=localStorage.getItem('sina_theme_name')||'fresh';document.body.dataset.theme=tn;buildThemes();
+if(localStorage.getItem('sina_mode')==='dark'){document.documentElement.classList.add('dark');document.getElementById('themeIcon').className='fas fa-sun'}
+if(localStorage.getItem('sina_collapsed')==='1'&&window.innerWidth>=1024)document.getElementById('sidebar').classList.add('collapsed');
+var fs=localStorage.getItem('sina_fs')||'m';setFont(fs);
+if(localStorage.getItem('sina_notif')==='0'){var nc=document.getElementById('notifChk');if(nc)nc.checked=false}else{var nc2=document.getElementById('notifChk');if(nc2)nc2.checked=true}
+if(localStorage.getItem('sina_auto')==='1'){var ac=document.getElementById('autoChk');if(ac)ac.checked=true}
+var w=localStorage.getItem('sina_word');if(w)document.getElementById('wordDoc').innerHTML=w;
+var nt=localStorage.getItem('sina_note');if(nt)document.getElementById('quickNote').value=nt;
+countWords();go(localStorage.getItem('sina_last')||'dashboard');applyLang();storeSize();
+}catch(e){buildThemes();go('dashboard')}
+clearChat();
+loadIran();loadWorld();loadGold();loadCrypto();loadWeather();refreshIP();loadNews();setupAuto();
+document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeMobile();boxHide()}if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='k'){e.preventDefault();document.getElementById('globalSearch').focus()}});
+window.addEventListener('resize',function(){if(window.innerWidth>=1024)document.getElementById('overlay').classList.add('hidden')});
+window.addEventListener('scroll',function(){var b=document.getElementById('topBtn');if(window.scrollY>400)b.classList.remove('hidden');else b.classList.add('hidden')});
+setInterval(function(){if(document.getElementById('page-market').classList.contains('active'))return},60000);
+</script>
+</body>
+</html>
